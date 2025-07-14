@@ -1,0 +1,2 @@
+# Hashes of file build rules.
+0ccb789da45d312c15eed1b0f0216834 examples/CMakeFiles/clean_assets
