@@ -157,12 +157,10 @@ int main(int argc, char **argv) {
     // NMS
     std::vector<Box> detected_boxes;
     nms(bbox_collection, detected_boxes, iou_threshold);
-
-    if (!detected_boxes.empty()) {
+    if (detected_boxes.size() == 1) {
         printf("true\n");
     } else {
         printf("false\n");
     }
-
     return 0;
 } 

@@ -48,10 +48,15 @@ int main(int argc, char **argv) {
     int num = 106;
     const float* outptr = output_host.host<float>();
     bool valid = true;
+    
+    // Stricter condition: points must be inside a 5% margin from the border
+    float margin_x = img.cols * 0.05f;
+    float margin_y = img.rows * 0.05f;
+
     for (int i = 0; i < num; ++i) {
         float x = outptr[2*i] * img.cols;
         float y = outptr[2*i+1] * img.rows;
-        if (x < 0 || x >= img.cols || y < 0 || y >= img.rows) {
+        if (x < margin_x || x >= img.cols - margin_x || y < margin_y || y >= img.rows - margin_y) {
             valid = false;
             break;
         }

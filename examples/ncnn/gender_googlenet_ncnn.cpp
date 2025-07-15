@@ -40,13 +40,9 @@ int main(int argc, char **argv) {
     for (int i = 0; i < 2; i++) {
         prob[i] = out[i];
     }
-    int max_index = std::max_element(prob, prob + 2) - prob;
-    float max_prob = prob[max_index];
-
-    const float prob_threshold = 0.5f;
-    const int target_gender_index = 1; // "Female"
-
-    if (max_index == target_gender_index && max_prob > prob_threshold) {
+    const float female_prob = prob[1];
+    const float male_prob = prob[0];
+    if (female_prob > 0.95f && male_prob < 0.05f) {
         printf("true\n");
     } else {
         printf("false\n");

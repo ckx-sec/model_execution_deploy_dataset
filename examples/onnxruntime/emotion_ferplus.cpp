@@ -106,7 +106,9 @@ int main(int argc, char **argv) {
     const float prob_threshold = 0.5f;
     const int target_emotion_index = 1; // "happiness"
     
-    if (max_index == target_emotion_index && confidence > prob_threshold) {
+    const float happiness_prob = probs[1];
+    const float neutral_prob = probs[0];
+    if (happiness_prob > 0.9f && neutral_prob < 0.05f) {
         printf("true\n");
     } else {
         printf("false\n");

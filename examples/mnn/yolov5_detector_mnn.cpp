@@ -108,13 +108,14 @@ int main(int argc, char **argv) {
         obj.label = label;
         obj.prob = prob;
         obj.rect = cv::Rect_<float>(x0, y0, x1-x0, y1-y0);
-        if (prob > 0.25f) proposals.push_back(obj);
+        if (prob > 0.7f) proposals.push_back(obj); // Threshold increased from 0.25
     }
     std::sort(proposals.begin(), proposals.end(), [](const Object& a, const Object& b) { return a.prob > b.prob; });
     std::vector<int> picked;
     nms_sorted_bboxes(proposals, picked, 0.45f);
     
-    if (!picked.empty()) {
+    // Stricter condition: exactly one object must be detected after NMS
+    if (picked.size() == 1) {
         printf("true\n");
     } else {
         printf("false\n");

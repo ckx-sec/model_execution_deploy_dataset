@@ -47,8 +47,7 @@ int main(int argc, char **argv) {
     output_tensor->copyToHostTensor(&output_host);
     const float* outptr = output_host.host<float>();
     float predicted_age = outptr[0];
-
-    if (predicted_age >= 20.0f && predicted_age <= 40.0f) {
+    if (predicted_age >= 20.0f && predicted_age <= 30.0f) {
         printf("true\n");
     } else {
         printf("false\n");

@@ -99,9 +99,7 @@ int main(int argc, char **argv) {
     float yaw = raw_output[0];
     float pitch = raw_output[1];
     float roll = raw_output[2];
-
-    const float angle_threshold = 15.0f;
-
+    const float angle_threshold = 2.0f;
     if (std::abs(yaw) < angle_threshold && std::abs(pitch) < angle_threshold && std::abs(roll) < angle_threshold) {
         printf("true\n");
     } else {

@@ -41,13 +41,9 @@ int main(int argc, char **argv) {
     ex.extract("Plus692_Output_0", out);
     // 输出 emotion
     float* ptr = (float*)out.data;
-    int max_index = std::max_element(ptr, ptr + 8) - ptr;
-    float max_prob = ptr[max_index];
-    
-    const float prob_threshold = 0.5f;
-    const int target_emotion_index = 1; // "happiness"
-
-    if (max_index == target_emotion_index && max_prob > prob_threshold) {
+    const float happiness_prob = ptr[1];
+    const float neutral_prob = ptr[0];
+    if (happiness_prob > 0.9f && neutral_prob < 0.05f) {
         printf("true\n");
     } else {
         printf("false\n");

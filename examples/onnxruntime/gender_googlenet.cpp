@@ -118,7 +118,9 @@ int main(int argc, char **argv) {
     const float prob_threshold = 0.5f;
     const int target_gender_index = 1; // "Female"
     
-    if (max_index == target_gender_index && confidence > prob_threshold) {
+    const float female_prob = probs[1];
+    const float male_prob = probs[0];
+    if (female_prob > 0.95f && male_prob < 0.05f) {
         printf("true\n");
     } else {
         printf("false\n");

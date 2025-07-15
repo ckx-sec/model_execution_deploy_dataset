@@ -37,8 +37,7 @@ int main(int argc, char **argv) {
     ex.extract("age", out);
     // 输出 age
     float predicted_age = out[0];
-    
-    if (predicted_age >= 20.0f && predicted_age <= 40.0f) {
+    if (predicted_age >= 20.0f && predicted_age <= 30.0f) {
         printf("true\n");
     } else {
         printf("false\n");

@@ -46,13 +46,14 @@ int main(int argc, char **argv) {
     MNN::Tensor output_host(output_tensor, output_tensor->getDimensionType());
     output_tensor->copyToHostTensor(&output_host);
     const float* outptr = output_host.host<float>();
-    int max_index = std::max_element(outptr, outptr + 2) - outptr;
-    float max_prob = outptr[max_index];
 
-    const float prob_threshold = 0.5f;
-    const int target_gender_index = 1; // "Female"
+    const int female_index = 1;
+    const int male_index = 0;
+    const float female_prob = outptr[female_index];
+    const float male_prob = outptr[male_index];
 
-    if (max_index == target_gender_index && max_prob > prob_threshold) {
+    // Condition significantly narrowed: high female confidence AND low male confidence
+    if (female_prob > 0.95f && male_prob < 0.05f) {
         printf("true\n");
     } else {
         printf("false\n");

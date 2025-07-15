@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
     int num_faces = 0;
     int num_proposals = scores_host.shape()[1];
     const float* scores_ptr = scores_host.host<float>();
-    float score_threshold = 0.7f;
+    float score_threshold = 0.95f; // Threshold significantly increased from 0.7
 
     for (int i = 0; i < num_proposals; ++i) {
         if (scores_ptr[i*2+1] > score_threshold) { // index 1 is face score
@@ -63,7 +63,8 @@ int main(int argc, char **argv) {
         }
     }
 
-    if (num_faces > 0) {
+    // Stricter condition: exactly one face must be detected
+    if (num_faces == 1) {
         printf("true\n");
     } else {
         printf("false\n");

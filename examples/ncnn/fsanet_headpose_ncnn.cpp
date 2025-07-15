@@ -40,9 +40,7 @@ int main(int argc, char **argv) {
     float yaw = out[0];
     float pitch = out[1];
     float roll = out[2];
-    
-    const float angle_threshold = 15.0f;
-
+    const float angle_threshold = 2.0f;
     if (fabs(yaw) < angle_threshold && fabs(pitch) < angle_threshold && fabs(roll) < angle_threshold) {
         printf("true\n");
     } else {
