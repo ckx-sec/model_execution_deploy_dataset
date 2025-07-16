@@ -40,4 +40,9 @@ target_link_libraries(ssrnet_age_ncnn PRIVATE model_deploy_dataset_lib ${OpenCV_
 target_include_directories(ssrnet_age_ncnn PRIVATE ${OpenCV_INCLUDE_DIRS})
 add_dependencies(ssrnet_age_ncnn clean_assets)
 
+add_executable(mnist_ncnn mnist_ncnn.cpp)
+target_link_libraries(mnist_ncnn PRIVATE model_deploy_dataset_lib ${OpenCV_LIBRARIES} NCNN::ncnn)
+target_include_directories(mnist_ncnn PRIVATE ${OpenCV_INCLUDE_DIRS})
+add_dependencies(mnist_ncnn clean_assets)
+
 # 可继续添加更多 NCNN demo 

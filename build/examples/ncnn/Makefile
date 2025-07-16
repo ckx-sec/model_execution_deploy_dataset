@@ -214,6 +214,20 @@ ssrnet_age_ncnn/fast:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/build.make examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/build
 .PHONY : ssrnet_age_ncnn/fast
 
+# Convenience name for target.
+examples/ncnn/CMakeFiles/mnist_ncnn.dir/rule:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/ncnn/CMakeFiles/mnist_ncnn.dir/rule
+.PHONY : examples/ncnn/CMakeFiles/mnist_ncnn.dir/rule
+
+# Convenience name for target.
+mnist_ncnn: examples/ncnn/CMakeFiles/mnist_ncnn.dir/rule
+.PHONY : mnist_ncnn
+
+# fast build rule for target.
+mnist_ncnn/fast:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/mnist_ncnn.dir/build.make examples/ncnn/CMakeFiles/mnist_ncnn.dir/build
+.PHONY : mnist_ncnn/fast
+
 emotion_ferplus_ncnn.o: emotion_ferplus_ncnn.cpp.o
 .PHONY : emotion_ferplus_ncnn.o
 
@@ -285,6 +299,30 @@ gender_googlenet_ncnn.s: gender_googlenet_ncnn.cpp.s
 gender_googlenet_ncnn.cpp.s:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/gender_googlenet_ncnn.dir/build.make examples/ncnn/CMakeFiles/gender_googlenet_ncnn.dir/gender_googlenet_ncnn.cpp.s
 .PHONY : gender_googlenet_ncnn.cpp.s
+
+mnist_ncnn.o: mnist_ncnn.cpp.o
+.PHONY : mnist_ncnn.o
+
+# target to build an object file
+mnist_ncnn.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/mnist_ncnn.dir/build.make examples/ncnn/CMakeFiles/mnist_ncnn.dir/mnist_ncnn.cpp.o
+.PHONY : mnist_ncnn.cpp.o
+
+mnist_ncnn.i: mnist_ncnn.cpp.i
+.PHONY : mnist_ncnn.i
+
+# target to preprocess a source file
+mnist_ncnn.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/mnist_ncnn.dir/build.make examples/ncnn/CMakeFiles/mnist_ncnn.dir/mnist_ncnn.cpp.i
+.PHONY : mnist_ncnn.cpp.i
+
+mnist_ncnn.s: mnist_ncnn.cpp.s
+.PHONY : mnist_ncnn.s
+
+# target to generate assembly for a file
+mnist_ncnn.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/mnist_ncnn.dir/build.make examples/ncnn/CMakeFiles/mnist_ncnn.dir/mnist_ncnn.cpp.s
+.PHONY : mnist_ncnn.cpp.s
 
 pfld_landmarks_ncnn.o: pfld_landmarks_ncnn.cpp.o
 .PHONY : pfld_landmarks_ncnn.o
@@ -393,6 +431,7 @@ help:
 	@echo "... emotion_ferplus_ncnn"
 	@echo "... fsanet_headpose_ncnn"
 	@echo "... gender_googlenet_ncnn"
+	@echo "... mnist_ncnn"
 	@echo "... pfld_landmarks_ncnn"
 	@echo "... ssrnet_age_ncnn"
 	@echo "... ultraface_detector_ncnn"
@@ -406,6 +445,9 @@ help:
 	@echo "... gender_googlenet_ncnn.o"
 	@echo "... gender_googlenet_ncnn.i"
 	@echo "... gender_googlenet_ncnn.s"
+	@echo "... mnist_ncnn.o"
+	@echo "... mnist_ncnn.i"
+	@echo "... mnist_ncnn.s"
 	@echo "... pfld_landmarks_ncnn.o"
 	@echo "... pfld_landmarks_ncnn.i"
 	@echo "... pfld_landmarks_ncnn.s"

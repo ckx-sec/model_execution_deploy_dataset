@@ -247,6 +247,19 @@ pfld_landmarks_onnxruntime/fast:
 .PHONY : pfld_landmarks_onnxruntime/fast
 
 #=============================================================================
+# Target rules for targets named mnist_onnxruntime
+
+# Build rule for target.
+mnist_onnxruntime: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mnist_onnxruntime
+.PHONY : mnist_onnxruntime
+
+# fast build rule for target.
+mnist_onnxruntime/fast:
+	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build
+.PHONY : mnist_onnxruntime/fast
+
+#=============================================================================
 # Target rules for targets named example_mnn
 
 # Build rule for target.
@@ -351,6 +364,19 @@ ssrnet_age_mnn/fast:
 .PHONY : ssrnet_age_mnn/fast
 
 #=============================================================================
+# Target rules for targets named mnist_mnn
+
+# Build rule for target.
+mnist_mnn: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mnist_mnn
+.PHONY : mnist_mnn
+
+# fast build rule for target.
+mnist_mnn/fast:
+	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/mnist_mnn.dir/build.make examples/mnn/CMakeFiles/mnist_mnn.dir/build
+.PHONY : mnist_mnn/fast
+
+#=============================================================================
 # Target rules for targets named ultraface_detector_ncnn
 
 # Build rule for target.
@@ -440,6 +466,19 @@ ssrnet_age_ncnn: cmake_check_build_system
 ssrnet_age_ncnn/fast:
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/build.make examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/build
 .PHONY : ssrnet_age_ncnn/fast
+
+#=============================================================================
+# Target rules for targets named mnist_ncnn
+
+# Build rule for target.
+mnist_ncnn: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mnist_ncnn
+.PHONY : mnist_ncnn
+
+# fast build rule for target.
+mnist_ncnn/fast:
+	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/mnist_ncnn.dir/build.make examples/ncnn/CMakeFiles/mnist_ncnn.dir/build
+.PHONY : mnist_ncnn/fast
 
 #=============================================================================
 # Target rules for targets named emotion_ferplus_tnn
@@ -555,6 +594,9 @@ help:
 	@echo "... gender_googlenet_ncnn"
 	@echo "... gender_googlenet_onnxruntime"
 	@echo "... gender_googlenet_tnn"
+	@echo "... mnist_mnn"
+	@echo "... mnist_ncnn"
+	@echo "... mnist_onnxruntime"
 	@echo "... model_deploy_dataset_lib"
 	@echo "... pfld_landmarks_mnn"
 	@echo "... pfld_landmarks_ncnn"

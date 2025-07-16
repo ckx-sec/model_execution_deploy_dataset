@@ -81,6 +81,16 @@ if(MEI_ENABLE_ONNXRUNTIME)
     target_link_libraries(pfld_landmarks_onnxruntime PRIVATE ONNXRuntime::onnxruntime)
 endif()
 
+add_executable(mnist_onnxruntime mnist.cpp)
+target_link_libraries(mnist_onnxruntime PRIVATE
+    model_deploy_dataset_lib
+    ${OpenCV_LIBRARIES}
+)
+target_include_directories(mnist_onnxruntime PRIVATE ${OpenCV_INCLUDE_DIRS})
+if(MEI_ENABLE_ONNXRUNTIME)
+    target_link_libraries(mnist_onnxruntime PRIVATE ONNXRuntime::onnxruntime)
+endif()
+
 # add_executable(ssrnet_age ssrnet_age.cpp)
 # target_link_libraries(ssrnet_age PRIVATE
 #     multi_engine_lib

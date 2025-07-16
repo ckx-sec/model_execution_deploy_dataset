@@ -228,6 +228,20 @@ ssrnet_age_mnn/fast:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/build.make examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/build
 .PHONY : ssrnet_age_mnn/fast
 
+# Convenience name for target.
+examples/mnn/CMakeFiles/mnist_mnn.dir/rule:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/mnn/CMakeFiles/mnist_mnn.dir/rule
+.PHONY : examples/mnn/CMakeFiles/mnist_mnn.dir/rule
+
+# Convenience name for target.
+mnist_mnn: examples/mnn/CMakeFiles/mnist_mnn.dir/rule
+.PHONY : mnist_mnn
+
+# fast build rule for target.
+mnist_mnn/fast:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/mnist_mnn.dir/build.make examples/mnn/CMakeFiles/mnist_mnn.dir/build
+.PHONY : mnist_mnn/fast
+
 emotion_ferplus_mnn.o: emotion_ferplus_mnn.cpp.o
 .PHONY : emotion_ferplus_mnn.o
 
@@ -323,6 +337,30 @@ gender_googlenet_mnn.s: gender_googlenet_mnn.cpp.s
 gender_googlenet_mnn.cpp.s:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/gender_googlenet_mnn.cpp.s
 .PHONY : gender_googlenet_mnn.cpp.s
+
+mnist_mnn.o: mnist_mnn.cpp.o
+.PHONY : mnist_mnn.o
+
+# target to build an object file
+mnist_mnn.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/mnist_mnn.dir/build.make examples/mnn/CMakeFiles/mnist_mnn.dir/mnist_mnn.cpp.o
+.PHONY : mnist_mnn.cpp.o
+
+mnist_mnn.i: mnist_mnn.cpp.i
+.PHONY : mnist_mnn.i
+
+# target to preprocess a source file
+mnist_mnn.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/mnist_mnn.dir/build.make examples/mnn/CMakeFiles/mnist_mnn.dir/mnist_mnn.cpp.i
+.PHONY : mnist_mnn.cpp.i
+
+mnist_mnn.s: mnist_mnn.cpp.s
+.PHONY : mnist_mnn.s
+
+# target to generate assembly for a file
+mnist_mnn.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/mnist_mnn.dir/build.make examples/mnn/CMakeFiles/mnist_mnn.dir/mnist_mnn.cpp.s
+.PHONY : mnist_mnn.cpp.s
 
 pfld_landmarks_mnn.o: pfld_landmarks_mnn.cpp.o
 .PHONY : pfld_landmarks_mnn.o
@@ -432,6 +470,7 @@ help:
 	@echo "... example_mnn"
 	@echo "... fsanet_headpose_mnn"
 	@echo "... gender_googlenet_mnn"
+	@echo "... mnist_mnn"
 	@echo "... pfld_landmarks_mnn"
 	@echo "... ssrnet_age_mnn"
 	@echo "... ultraface_detector_mnn"
@@ -448,6 +487,9 @@ help:
 	@echo "... gender_googlenet_mnn.o"
 	@echo "... gender_googlenet_mnn.i"
 	@echo "... gender_googlenet_mnn.s"
+	@echo "... mnist_mnn.o"
+	@echo "... mnist_mnn.i"
+	@echo "... mnist_mnn.s"
 	@echo "... pfld_landmarks_mnn.o"
 	@echo "... pfld_landmarks_mnn.i"
 	@echo "... pfld_landmarks_mnn.s"

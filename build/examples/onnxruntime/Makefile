@@ -228,6 +228,20 @@ pfld_landmarks_onnxruntime/fast:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build
 .PHONY : pfld_landmarks_onnxruntime/fast
 
+# Convenience name for target.
+examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/rule:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/rule
+.PHONY : examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/rule
+
+# Convenience name for target.
+mnist_onnxruntime: examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/rule
+.PHONY : mnist_onnxruntime
+
+# fast build rule for target.
+mnist_onnxruntime/fast:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build
+.PHONY : mnist_onnxruntime/fast
+
 emotion_ferplus.o: emotion_ferplus.cpp.o
 .PHONY : emotion_ferplus.o
 
@@ -323,6 +337,30 @@ gender_googlenet.s: gender_googlenet.cpp.s
 gender_googlenet.cpp.s:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet.cpp.s
 .PHONY : gender_googlenet.cpp.s
+
+mnist.o: mnist.cpp.o
+.PHONY : mnist.o
+
+# target to build an object file
+mnist.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.o
+.PHONY : mnist.cpp.o
+
+mnist.i: mnist.cpp.i
+.PHONY : mnist.i
+
+# target to preprocess a source file
+mnist.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.i
+.PHONY : mnist.cpp.i
+
+mnist.s: mnist.cpp.s
+.PHONY : mnist.s
+
+# target to generate assembly for a file
+mnist.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.s
+.PHONY : mnist.cpp.s
 
 pfld_landmarks.o: pfld_landmarks.cpp.o
 .PHONY : pfld_landmarks.o
@@ -432,6 +470,7 @@ help:
 	@echo "... example_onnxruntime"
 	@echo "... fsanet_headpose_onnxruntime"
 	@echo "... gender_googlenet_onnxruntime"
+	@echo "... mnist_onnxruntime"
 	@echo "... pfld_landmarks_onnxruntime"
 	@echo "... ssrnet_age_onnxruntime"
 	@echo "... ultraface_detector_onnxruntime"
@@ -448,6 +487,9 @@ help:
 	@echo "... gender_googlenet.o"
 	@echo "... gender_googlenet.i"
 	@echo "... gender_googlenet.s"
+	@echo "... mnist.o"
+	@echo "... mnist.i"
+	@echo "... mnist.s"
 	@echo "... pfld_landmarks.o"
 	@echo "... pfld_landmarks.i"
 	@echo "... pfld_landmarks.s"
