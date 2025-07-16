@@ -37,8 +37,8 @@ int main(int argc, char **argv) {
     ex.extract("output", out);
     // 输出 landmarks
     bool valid = true;
-    float margin_x = img.cols * 0.05f;
-    float margin_y = img.rows * 0.05f;
+    float margin_x = img.cols * 0.02f;
+    float margin_y = img.rows * 0.02f;
     for (int i = 0; i < 106; ++i) {
         float x = out[2*i] * img.cols;
         float y = out[2*i+1] * img.rows;

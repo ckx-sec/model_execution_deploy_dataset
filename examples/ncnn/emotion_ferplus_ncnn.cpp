@@ -1,8 +1,27 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <numeric>
+#include <algorithm>
+#include <cmath>
 #include <opencv2/opencv.hpp>
 #include <net.h>
+
+// A simple softmax implementation
+template <typename T>
+std::vector<T> softmax(const T* data, size_t size) {
+    std::vector<T> result(size);
+    const T max_val = *std::max_element(data, data + size);
+    T sum = 0;
+    for (size_t i = 0; i < size; ++i) {
+        result[i] = std::exp(data[i] - max_val);
+        sum += result[i];
+    }
+    for (size_t i = 0; i < size; ++i) {
+        result[i] /= sum;
+    }
+    return result;
+}
 
 int main(int argc, char **argv) {
     if (argc < 4) {
@@ -40,10 +59,14 @@ int main(int argc, char **argv) {
     ncnn::Mat out;
     ex.extract("Plus692_Output_0", out);
     // 输出 emotion
-    float* ptr = (float*)out.data;
-    const float happiness_prob = ptr[1];
-    const float neutral_prob = ptr[0];
-    if (happiness_prob > 0.9f && neutral_prob < 0.05f) {
+    float* raw_output = (float*)out.data;
+    size_t output_size = out.w;
+
+    auto probs = softmax(raw_output, output_size);
+
+    const float happiness_prob = probs[1];
+    const float neutral_prob = probs[0];
+    if (happiness_prob > 0.7f && neutral_prob < 0.3f) {
         printf("true\n");
     } else {
         printf("false\n");

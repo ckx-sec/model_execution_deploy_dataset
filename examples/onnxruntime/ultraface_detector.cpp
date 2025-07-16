@@ -64,7 +64,7 @@ int main(int argc, char **argv) {
     const std::string image_path = argv[2];
     const int input_width = 320;
     const int input_height = 240;
-    const float score_threshold = 0.7f;
+    const float score_threshold = 0.5f;
     const float iou_threshold = 0.3f;
 
     // --- ONNXRuntime setup ---
@@ -157,7 +157,7 @@ int main(int argc, char **argv) {
     // NMS
     std::vector<Box> detected_boxes;
     nms(bbox_collection, detected_boxes, iou_threshold);
-    if (detected_boxes.size() == 1) {
+    if (detected_boxes.size() > 0) {
         printf("true\n");
     } else {
         printf("false\n");

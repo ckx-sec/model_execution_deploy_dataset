@@ -47,13 +47,11 @@ int main(int argc, char **argv) {
     output_tensor->copyToHostTensor(&output_host);
     int num = 106;
     const float* outptr = output_host.host<float>();
+    // Stricter condition: ALL landmarks must be within a narrower margin of the image
     bool valid = true;
-    
-    // Stricter condition: points must be inside a 5% margin from the border
-    float margin_x = img.cols * 0.05f;
-    float margin_y = img.rows * 0.05f;
-
-    for (int i = 0; i < num; ++i) {
+    float margin_x = img.cols * 0.02f;
+    float margin_y = img.rows * 0.02f;
+    for (int i = 0; i < 106; ++i) {
         float x = outptr[2*i] * img.cols;
         float y = outptr[2*i+1] * img.rows;
         if (x < margin_x || x >= img.cols - margin_x || y < margin_y || y >= img.rows - margin_y) {

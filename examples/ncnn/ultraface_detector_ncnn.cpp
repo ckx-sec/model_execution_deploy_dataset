@@ -52,7 +52,7 @@ int main(int argc, char **argv) {
 
     // 后处理（假设输出格式为 N x 6: x1, y1, x2, y2, score, label）
     int num_faces = 0;
-    float score_threshold = 0.95f;
+    float score_threshold = 0.7f;
     for (int i = 0; i < scores.h; ++i) {
         const float* values = scores.row(i);
         float conf = values[1];

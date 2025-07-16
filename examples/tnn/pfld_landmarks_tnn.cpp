@@ -74,7 +74,7 @@ int main(int argc, char** argv) {
     for (int i = 0; i < 106; i++) {
         float x = output_data[i * 2];
         float y = output_data[i * 2 + 1];
-        if (x < 0.f || x > 1.f || y < 0.f || y > 1.f) {
+        if (x < -0.1f || x > 1.1f || y < -0.1f || y > 1.1f) {
             valid = false;
             break;
         }

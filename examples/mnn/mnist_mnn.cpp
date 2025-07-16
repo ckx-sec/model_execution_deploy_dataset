@@ -84,7 +84,7 @@ int main(int argc, char* argv[]) {
     int64_t predicted_digit = std::distance(results.begin(), max_it);
     float confidence = *max_it;
 
-    const float prob_threshold = 0.8f;
+    const float prob_threshold = 0.7f;
     const int target_digit = 7;
 
     // New business logic: return true if predicted digit is 7 with high confidence

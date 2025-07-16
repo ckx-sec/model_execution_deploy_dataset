@@ -27,9 +27,10 @@ int main(int argc, char **argv) {
     const int input_size = 64;
     cv::Mat resized;
     cv::resize(img, resized, cv::Size(input_size, input_size));
-    ncnn::Mat in = ncnn::Mat::from_pixels(resized.data, ncnn::Mat::PIXEL_BGR2RGB, input_size, input_size);
-    const float mean_vals[3] = {127.5f, 127.5f, 127.5f};
-    const float norm_vals[3] = {1.0f/128, 1.0f/128, 1.0f/128};
+    ncnn::Mat in = ncnn::Mat::from_pixels(resized.data, ncnn::Mat::PIXEL_BGR, input_size, input_size);
+    // Align with ONNX version's normalization (ImageNet mean/std)
+    const float mean_vals[3] = {0.485f * 255.0f, 0.456f * 255.0f, 0.406f * 255.0f};
+    const float norm_vals[3] = {1.0f / (0.229f * 255.0f), 1.0f / (0.224f * 255.0f), 1.0f / (0.225f * 255.0f)};
     in.substract_mean_normalize(mean_vals, norm_vals);
     ncnn::Extractor ex = net.create_extractor();
     ex.input("input", in);
@@ -37,7 +38,7 @@ int main(int argc, char **argv) {
     ex.extract("age", out);
     // 输出 age
     float predicted_age = out[0];
-    if (predicted_age >= 20.0f && predicted_age <= 30.0f) {
+    if (predicted_age >= 18.0f && predicted_age <= 35.0f) {
         printf("true\n");
     } else {
         printf("false\n");

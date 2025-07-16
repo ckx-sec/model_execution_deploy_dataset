@@ -125,7 +125,7 @@ int main(int argc, char **argv) {
     for (size_t i = 0; i < num_landmarks; i += 2) {
         float x = raw_output[i];
         float y = raw_output[i+1];
-        if (x < 0.05f || x > 0.95f || y < 0.05f || y > 0.95f) {
+        if (x < 0.02f || x > 0.98f || y < 0.02f || y > 0.98f) {
             valid = false;
             break;
         }

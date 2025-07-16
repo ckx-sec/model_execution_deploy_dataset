@@ -74,15 +74,13 @@ int main(int argc, char **argv) {
     std::vector<float> input_tensor_values(1 * 3 * input_height * input_width);
     resized_image.convertTo(resized_image, CV_32F);
     
-    // Normalize (mean=[104, 117, 123], std=[1, 1, 1])
-    float mean[] = {104.0f, 117.0f, 123.0f};
-    
+    // Normalize to [-1, 1]
     // HWC to CHW and normalize
     for (int c = 0; c < 3; ++c) {
         for (int h = 0; h < input_height; ++h) {
             for (int w = 0; w < input_width; ++w) {
                 input_tensor_values[c * input_height * input_width + h * input_width + w] =
-                    resized_image.at<cv::Vec3f>(h, w)[c] - mean[c];
+                    (resized_image.at<cv::Vec3f>(h, w)[c] - 127.5f) / 128.0f;
             }
         }
     }
@@ -110,17 +108,11 @@ int main(int argc, char **argv) {
     
     auto probs = softmax(raw_output, output_size);
     
-    // Find the class with the highest probability
     auto max_it = std::max_element(probs.begin(), probs.end());
-    int max_index = std::distance(probs.begin(), max_it);
-    float confidence = *max_it;
-
-    const float prob_threshold = 0.5f;
+    int predicted_gender_index = std::distance(probs.begin(), max_it);
     const int target_gender_index = 1; // "Female"
-    
-    const float female_prob = probs[1];
-    const float male_prob = probs[0];
-    if (female_prob > 0.95f && male_prob < 0.05f) {
+
+    if (predicted_gender_index == target_gender_index) {
         printf("true\n");
     } else {
         printf("false\n");

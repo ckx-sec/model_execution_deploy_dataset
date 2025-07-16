@@ -1,10 +1,29 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <numeric>
+#include <algorithm>
+#include <cmath>
 #include <opencv2/opencv.hpp>
 #include <MNN/Interpreter.hpp>
 #include <MNN/Tensor.hpp>
 #include <MNN/ImageProcess.hpp>
+
+// A simple softmax implementation
+template <typename T>
+std::vector<T> softmax(const T* data, size_t size) {
+    std::vector<T> result(size);
+    const T max_val = *std::max_element(data, data + size);
+    T sum = 0;
+    for (size_t i = 0; i < size; ++i) {
+        result[i] = std::exp(data[i] - max_val);
+        sum += result[i];
+    }
+    for (size_t i = 0; i < size; ++i) {
+        result[i] /= sum;
+    }
+    return result;
+}
 
 int main(int argc, char **argv) {
     if (argc < 3) {
@@ -32,6 +51,7 @@ int main(int argc, char **argv) {
     MNN::CV::ImageProcess::Config p_config;
     p_config.sourceFormat = MNN::CV::BGR;
     p_config.destFormat = MNN::CV::RGB;
+    // Revert to original normalization: scale to [-1, 1]
     p_config.mean[0] = 127.5f;
     p_config.mean[1] = 127.5f;
     p_config.mean[2] = 127.5f;
@@ -45,15 +65,16 @@ int main(int argc, char **argv) {
     auto output_tensor = net->getSessionOutput(session, nullptr);
     MNN::Tensor output_host(output_tensor, output_tensor->getDimensionType());
     output_tensor->copyToHostTensor(&output_host);
-    const float* outptr = output_host.host<float>();
+    const float* raw_output = output_host.host<float>();
+    size_t output_size = output_host.elementSize();
 
-    const int female_index = 1;
-    const int male_index = 0;
-    const float female_prob = outptr[female_index];
-    const float male_prob = outptr[male_index];
+    auto probs = softmax(raw_output, output_size);
 
-    // Condition significantly narrowed: high female confidence AND low male confidence
-    if (female_prob > 0.95f && male_prob < 0.05f) {
+    auto max_it = std::max_element(probs.begin(), probs.end());
+    int predicted_gender_index = std::distance(probs.begin(), max_it);
+    const int target_gender_index = 1; // "Female"
+
+    if (predicted_gender_index == target_gender_index) {
         printf("true\n");
     } else {
         printf("false\n");

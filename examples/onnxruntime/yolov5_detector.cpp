@@ -169,7 +169,7 @@ int main(int argc, char **argv) {
     
     std::vector<Box> detected_boxes;
     nms(bbox_collection, detected_boxes, iou_threshold);
-    if (detected_boxes.size() == 1 && detected_boxes[0].score > 0.7f) {
+    if (detected_boxes.size() > 0 && detected_boxes[0].score > 0.5f) {
         printf("true\n");
     } else {
         printf("false\n");

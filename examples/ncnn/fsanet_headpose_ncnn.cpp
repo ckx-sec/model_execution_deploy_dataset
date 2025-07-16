@@ -26,11 +26,28 @@ int main(int argc, char **argv) {
     }
     // 输入尺寸
     const int input_size = 64;
+
+    // --- Preprocessing ---
+    // 1. Padding (Align with ONNX Runtime version)
+    const float pad = 0.3f;
+    const int h = img.rows;
+    const int w = img.cols;
+    const int nh = static_cast<int>(static_cast<float>(h) + pad * static_cast<float>(h));
+    const int nw = static_cast<int>(static_cast<float>(w) + pad * static_cast<float>(w));
+    const int nx1 = std::max(0, static_cast<int>((nw - w) / 2));
+    const int ny1 = std::max(0, static_cast<int>((nh - h) / 2));
+
+    cv::Mat padded_image = cv::Mat(nh, nw, CV_8UC3, cv::Scalar(0, 0, 0));
+    img.copyTo(padded_image(cv::Rect(nx1, ny1, w, h)));
+
+    // 2. Resize
     cv::Mat resized;
-    cv::resize(img, resized, cv::Size(input_size, input_size));
-    ncnn::Mat in = ncnn::Mat::from_pixels(resized.data, ncnn::Mat::PIXEL_BGR2RGB, input_size, input_size);
+    cv::resize(padded_image, resized, cv::Size(input_size, input_size));
+    
+    // 3. Normalize (Align with ONNX Runtime version)
+    ncnn::Mat in = ncnn::Mat::from_pixels(resized.data, ncnn::Mat::PIXEL_BGR, input_size, input_size); // No BGR2RGB
     const float mean_vals[3] = {127.5f, 127.5f, 127.5f};
-    const float norm_vals[3] = {1.0f/128, 1.0f/128, 1.0f/128};
+    const float norm_vals[3] = {1.0f/127.5f, 1.0f/127.5f, 1.0f/127.5f};
     in.substract_mean_normalize(mean_vals, norm_vals);
     ncnn::Extractor ex = net.create_extractor();
     ex.input("input", in);
@@ -40,7 +57,7 @@ int main(int argc, char **argv) {
     float yaw = out[0];
     float pitch = out[1];
     float roll = out[2];
-    const float angle_threshold = 2.0f;
+    const float angle_threshold = 10.0f;
     if (fabs(yaw) < angle_threshold && fabs(pitch) < angle_threshold && fabs(roll) < angle_threshold) {
         printf("true\n");
     } else {

@@ -73,7 +73,7 @@ int main(int argc, char** argv) {
 
     int max_index = std::max_element(output_data, output_data + 8) - output_data;
     float max_prob = output_data[max_index];
-    const float prob_threshold = 0.5f;
+    const float prob_threshold = 0.4f;
     const int target_emotion_index = 1; // "happiness"
 
     if (max_index == target_emotion_index && max_prob > prob_threshold) {

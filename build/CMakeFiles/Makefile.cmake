@@ -168,7 +168,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/DependInfo.cmake"
   "examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/DependInfo.cmake"
   "examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/DependInfo.cmake"
-  "examples/mnn/CMakeFiles/mnist_mnn.dir/DependInfo.cmake"
   "examples/ncnn/CMakeFiles/ultraface_detector_ncnn.dir/DependInfo.cmake"
   "examples/ncnn/CMakeFiles/yolov5_detector_ncnn.dir/DependInfo.cmake"
   "examples/ncnn/CMakeFiles/fsanet_headpose_ncnn.dir/DependInfo.cmake"

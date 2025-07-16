@@ -25,7 +25,6 @@
 /app/build/examples/mnn/CMakeFiles/gender_googlenet_mnn.dir
 /app/build/examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir
 /app/build/examples/mnn/CMakeFiles/ssrnet_age_mnn.dir
-/app/build/examples/mnn/CMakeFiles/mnist_mnn.dir
 /app/build/examples/mnn/CMakeFiles/edit_cache.dir
 /app/build/examples/mnn/CMakeFiles/rebuild_cache.dir
 /app/build/examples/ncnn/CMakeFiles/ultraface_detector_ncnn.dir

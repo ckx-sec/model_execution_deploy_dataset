@@ -364,19 +364,6 @@ ssrnet_age_mnn/fast:
 .PHONY : ssrnet_age_mnn/fast
 
 #=============================================================================
-# Target rules for targets named mnist_mnn
-
-# Build rule for target.
-mnist_mnn: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mnist_mnn
-.PHONY : mnist_mnn
-
-# fast build rule for target.
-mnist_mnn/fast:
-	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/mnist_mnn.dir/build.make examples/mnn/CMakeFiles/mnist_mnn.dir/build
-.PHONY : mnist_mnn/fast
-
-#=============================================================================
 # Target rules for targets named ultraface_detector_ncnn
 
 # Build rule for target.
@@ -594,7 +581,6 @@ help:
 	@echo "... gender_googlenet_ncnn"
 	@echo "... gender_googlenet_onnxruntime"
 	@echo "... gender_googlenet_tnn"
-	@echo "... mnist_mnn"
 	@echo "... mnist_ncnn"
 	@echo "... mnist_onnxruntime"
 	@echo "... model_deploy_dataset_lib"

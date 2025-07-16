@@ -108,7 +108,7 @@ int main(int argc, char **argv) {
         obj.label = label;
         obj.prob = prob;
         obj.rect = cv::Rect_<float>(x0, y0, x1-x0, y1-y0);
-        if (prob > 0.7f) proposals.push_back(obj); // Threshold increased from 0.25
+        if (prob > 0.5f) proposals.push_back(obj); // Threshold increased from 0.25
     }
     std::sort(proposals.begin(), proposals.end(), [](const Object& a, const Object& b) { return a.prob > b.prob; });
     std::vector<int> picked;

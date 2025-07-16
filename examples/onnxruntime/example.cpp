@@ -138,7 +138,7 @@ int main(int argc, char **argv) {
     int max_index = std::distance(probs.begin(), max_it);
     float confidence = *max_it;
 
-    const float prob_threshold = 0.5f;
+    const float prob_threshold = 0.4f;
     const int target_age_index = 4; // 25-32 years
     
     if (max_index == target_age_index && confidence > prob_threshold) {

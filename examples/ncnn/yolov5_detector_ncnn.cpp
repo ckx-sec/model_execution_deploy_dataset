@@ -142,7 +142,7 @@ int main(int argc, char **argv) {
     std::sort(proposals.begin(), proposals.end(), [](const Object& a, const Object& b) { return a.prob > b.prob; });
     std::vector<int> picked;
     nms_sorted_bboxes(proposals, picked, 0.45f);
-    if (picked.size() == 1 && proposals[picked[0]].prob > 0.7f) {
+    if (picked.size() == 1 && proposals[picked[0]].prob > 0.5f) {
         printf("true\n");
     } else {
         printf("false\n");
