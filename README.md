@@ -23,54 +23,6 @@
 
 本项目的核心是一个**用于 C++ 环境下多推理引擎部署、测试和比较的综合性工具集与资源库**。其架构并非一个统一的软件库，而是一个精心设计的“沙盒环境”，允许开发者直接使用不同引擎的原生API进行实验。
 
-```mermaid
-graph TD
-    subgraph "宿主机 (Developer's Machine)"
-        A[开发者] -- 执行 --> B(./build.sh)
-    end
-
-    B -- 控制 --> C{Docker 容器}
-
-    subgraph "Docker 容器 (Ubuntu ARM64)"
-        C -- 内部执行 --> D{构建系统}
-        D -- 编译 --> E{示例程序}
-        E -- 加载 --> F{模型资源}
-        E -- 使用 --> G{推理引擎原生库}
-
-        subgraph D [构建系统]
-            direction LR
-            D1(CMakeLists.txt) -- 配置 --> D2(CMake)
-            D2 -- 生成 --> D3(Makefiles)
-            D3 -- 构建 --> E
-        end
-
-        subgraph G [推理引擎原生库]
-            direction LR
-            G1[MNN]
-            G2[NCNN]
-            G3[ONNXRuntime]
-            G4[TFLite]
-            G5[TNN]
-        end
-        
-        subgraph E [示例程序 (examples/)]
-            direction TB
-            E1[mnist_ncnn.cpp] --> G2
-            E2[mnist_onnxruntime.cpp] --> G3
-            E3[...]
-        end
-
-        subgraph F [模型与数据 (assets/)]
-            direction TB
-            F1[*.onnx]
-            F2[*.mnn]
-            F3[*.param, *.bin]
-            F4[test_*.jpg]
-        end
-    end
-
-    style C fill:#f9f,stroke:#333,stroke-width:2px
-```
 
 ## 支持的模型与任务
 
