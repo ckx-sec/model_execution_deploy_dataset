@@ -70,16 +70,35 @@ int main(int argc, char** argv) {
         return -1;
     }
     float* output_data = static_cast<float*>(output_mat->GetData());
+    auto output_dims = output_mat->GetDims();
+    size_t output_size = output_dims.empty() ? 0 : output_dims[1];
 
-    int max_index = std::max_element(output_data, output_data + 8) - output_data;
-    float max_prob = output_data[max_index];
-    const float prob_threshold = 0.4f;
-    const int target_emotion_index = 1; // "happiness"
-
-    if (max_index == target_emotion_index && max_prob > prob_threshold) {
-        printf("true\n");
-    } else {
-        printf("false\n");
+    // Softmax to get probabilities
+    std::vector<float> probs(output_size);
+    if (output_size > 0) {
+        float max_val = *std::max_element(output_data, output_data + output_size);
+        float sum_exp = 0.0f;
+        for (size_t i = 0; i < output_size; i++) {
+            probs[i] = std::exp(output_data[i] - max_val);
+            sum_exp += probs[i];
+        }
+        for (size_t i = 0; i < output_size; i++) {
+            probs[i] /= sum_exp;
+        }
     }
+    
+    // Apply standard logic
+    if (output_size >= 2) { // Ensure we have at least neutral and happiness probs
+        const float happiness_prob = probs[1]; // "happiness"
+        const float neutral_prob = probs[0];   // "neutral"
+        if (happiness_prob > 0.5f && neutral_prob < 0.4f) {
+            printf("true\n");
+        } else {
+            printf("false\n");
+        }
+    } else {
+        printf("false\n"); // Not enough classes in output
+    }
+    
     return 0;
 } 

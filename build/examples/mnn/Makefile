@@ -117,18 +117,18 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-examples/mnn/CMakeFiles/example_mnn.dir/rule:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/mnn/CMakeFiles/example_mnn.dir/rule
-.PHONY : examples/mnn/CMakeFiles/example_mnn.dir/rule
+examples/mnn/CMakeFiles/age_googlenet_mnn.dir/rule:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/mnn/CMakeFiles/age_googlenet_mnn.dir/rule
+.PHONY : examples/mnn/CMakeFiles/age_googlenet_mnn.dir/rule
 
 # Convenience name for target.
-example_mnn: examples/mnn/CMakeFiles/example_mnn.dir/rule
-.PHONY : example_mnn
+age_googlenet_mnn: examples/mnn/CMakeFiles/age_googlenet_mnn.dir/rule
+.PHONY : age_googlenet_mnn
 
 # fast build rule for target.
-example_mnn/fast:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/example_mnn.dir/build.make examples/mnn/CMakeFiles/example_mnn.dir/build
-.PHONY : example_mnn/fast
+age_googlenet_mnn/fast:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build
+.PHONY : age_googlenet_mnn/fast
 
 # Convenience name for target.
 examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/rule:
@@ -228,6 +228,30 @@ ssrnet_age_mnn/fast:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/build.make examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/build
 .PHONY : ssrnet_age_mnn/fast
 
+age_googlenet_mnn.o: age_googlenet_mnn.cpp.o
+.PHONY : age_googlenet_mnn.o
+
+# target to build an object file
+age_googlenet_mnn.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/age_googlenet_mnn.dir/age_googlenet_mnn.cpp.o
+.PHONY : age_googlenet_mnn.cpp.o
+
+age_googlenet_mnn.i: age_googlenet_mnn.cpp.i
+.PHONY : age_googlenet_mnn.i
+
+# target to preprocess a source file
+age_googlenet_mnn.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/age_googlenet_mnn.dir/age_googlenet_mnn.cpp.i
+.PHONY : age_googlenet_mnn.cpp.i
+
+age_googlenet_mnn.s: age_googlenet_mnn.cpp.s
+.PHONY : age_googlenet_mnn.s
+
+# target to generate assembly for a file
+age_googlenet_mnn.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/age_googlenet_mnn.dir/age_googlenet_mnn.cpp.s
+.PHONY : age_googlenet_mnn.cpp.s
+
 emotion_ferplus_mnn.o: emotion_ferplus_mnn.cpp.o
 .PHONY : emotion_ferplus_mnn.o
 
@@ -251,30 +275,6 @@ emotion_ferplus_mnn.s: emotion_ferplus_mnn.cpp.s
 emotion_ferplus_mnn.cpp.s:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/build.make examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/emotion_ferplus_mnn.cpp.s
 .PHONY : emotion_ferplus_mnn.cpp.s
-
-example_mnn.o: example_mnn.cpp.o
-.PHONY : example_mnn.o
-
-# target to build an object file
-example_mnn.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/example_mnn.dir/build.make examples/mnn/CMakeFiles/example_mnn.dir/example_mnn.cpp.o
-.PHONY : example_mnn.cpp.o
-
-example_mnn.i: example_mnn.cpp.i
-.PHONY : example_mnn.i
-
-# target to preprocess a source file
-example_mnn.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/example_mnn.dir/build.make examples/mnn/CMakeFiles/example_mnn.dir/example_mnn.cpp.i
-.PHONY : example_mnn.cpp.i
-
-example_mnn.s: example_mnn.cpp.s
-.PHONY : example_mnn.s
-
-# target to generate assembly for a file
-example_mnn.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/example_mnn.dir/build.make examples/mnn/CMakeFiles/example_mnn.dir/example_mnn.cpp.s
-.PHONY : example_mnn.cpp.s
 
 fsanet_headpose_mnn.o: fsanet_headpose_mnn.cpp.o
 .PHONY : fsanet_headpose_mnn.o
@@ -428,20 +428,20 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... age_googlenet_mnn"
 	@echo "... emotion_ferplus_mnn"
-	@echo "... example_mnn"
 	@echo "... fsanet_headpose_mnn"
 	@echo "... gender_googlenet_mnn"
 	@echo "... pfld_landmarks_mnn"
 	@echo "... ssrnet_age_mnn"
 	@echo "... ultraface_detector_mnn"
 	@echo "... yolov5_detector_mnn"
+	@echo "... age_googlenet_mnn.o"
+	@echo "... age_googlenet_mnn.i"
+	@echo "... age_googlenet_mnn.s"
 	@echo "... emotion_ferplus_mnn.o"
 	@echo "... emotion_ferplus_mnn.i"
 	@echo "... emotion_ferplus_mnn.s"
-	@echo "... example_mnn.o"
-	@echo "... example_mnn.i"
-	@echo "... example_mnn.s"
 	@echo "... fsanet_headpose_mnn.o"
 	@echo "... fsanet_headpose_mnn.i"
 	@echo "... fsanet_headpose_mnn.s"

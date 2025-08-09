@@ -48,6 +48,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/app/build/examples/mnn/cmake_install.cmake")
   include("/app/build/examples/ncnn/cmake_install.cmake")
   include("/app/build/examples/tnn/cmake_install.cmake")
+  include("/app/build/examples/tflite/cmake_install.cmake")
 
 endif()
 

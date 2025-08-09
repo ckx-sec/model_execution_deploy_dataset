@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/app/examples/onnxruntime/ultraface_detector.cpp" "examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o" "gcc" "examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o.d"
+  "/app/examples/onnxruntime/ultraface_detector_onnxruntime.cpp" "examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o" "gcc" "examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

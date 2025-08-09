@@ -117,18 +117,18 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/rule:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/rule
-.PHONY : examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/rule
+examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/rule:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/rule
+.PHONY : examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/rule
 
 # Convenience name for target.
-example_onnxruntime: examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/rule
-.PHONY : example_onnxruntime
+age_googlenet_onnxruntime: examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/rule
+.PHONY : age_googlenet_onnxruntime
 
 # fast build rule for target.
-example_onnxruntime/fast:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build
-.PHONY : example_onnxruntime/fast
+age_googlenet_onnxruntime/fast:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build
+.PHONY : age_googlenet_onnxruntime/fast
 
 # Convenience name for target.
 examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/rule:
@@ -242,221 +242,221 @@ mnist_onnxruntime/fast:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build
 .PHONY : mnist_onnxruntime/fast
 
-emotion_ferplus.o: emotion_ferplus.cpp.o
-.PHONY : emotion_ferplus.o
+age_googlenet_onnxruntime.o: age_googlenet_onnxruntime.cpp.o
+.PHONY : age_googlenet_onnxruntime.o
 
 # target to build an object file
-emotion_ferplus.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/emotion_ferplus.cpp.o
-.PHONY : emotion_ferplus.cpp.o
+age_googlenet_onnxruntime.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/age_googlenet_onnxruntime.cpp.o
+.PHONY : age_googlenet_onnxruntime.cpp.o
 
-emotion_ferplus.i: emotion_ferplus.cpp.i
-.PHONY : emotion_ferplus.i
+age_googlenet_onnxruntime.i: age_googlenet_onnxruntime.cpp.i
+.PHONY : age_googlenet_onnxruntime.i
 
 # target to preprocess a source file
-emotion_ferplus.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/emotion_ferplus.cpp.i
-.PHONY : emotion_ferplus.cpp.i
+age_googlenet_onnxruntime.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/age_googlenet_onnxruntime.cpp.i
+.PHONY : age_googlenet_onnxruntime.cpp.i
 
-emotion_ferplus.s: emotion_ferplus.cpp.s
-.PHONY : emotion_ferplus.s
+age_googlenet_onnxruntime.s: age_googlenet_onnxruntime.cpp.s
+.PHONY : age_googlenet_onnxruntime.s
 
 # target to generate assembly for a file
-emotion_ferplus.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/emotion_ferplus.cpp.s
-.PHONY : emotion_ferplus.cpp.s
+age_googlenet_onnxruntime.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/age_googlenet_onnxruntime.cpp.s
+.PHONY : age_googlenet_onnxruntime.cpp.s
 
-example.o: example.cpp.o
-.PHONY : example.o
+emotion_ferplus_onnxruntime.o: emotion_ferplus_onnxruntime.cpp.o
+.PHONY : emotion_ferplus_onnxruntime.o
 
 # target to build an object file
-example.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/example.cpp.o
-.PHONY : example.cpp.o
+emotion_ferplus_onnxruntime.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/emotion_ferplus_onnxruntime.cpp.o
+.PHONY : emotion_ferplus_onnxruntime.cpp.o
 
-example.i: example.cpp.i
-.PHONY : example.i
+emotion_ferplus_onnxruntime.i: emotion_ferplus_onnxruntime.cpp.i
+.PHONY : emotion_ferplus_onnxruntime.i
 
 # target to preprocess a source file
-example.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/example.cpp.i
-.PHONY : example.cpp.i
+emotion_ferplus_onnxruntime.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/emotion_ferplus_onnxruntime.cpp.i
+.PHONY : emotion_ferplus_onnxruntime.cpp.i
 
-example.s: example.cpp.s
-.PHONY : example.s
+emotion_ferplus_onnxruntime.s: emotion_ferplus_onnxruntime.cpp.s
+.PHONY : emotion_ferplus_onnxruntime.s
 
 # target to generate assembly for a file
-example.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/example.cpp.s
-.PHONY : example.cpp.s
+emotion_ferplus_onnxruntime.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/emotion_ferplus_onnxruntime.cpp.s
+.PHONY : emotion_ferplus_onnxruntime.cpp.s
 
-fsanet_headpose.o: fsanet_headpose.cpp.o
-.PHONY : fsanet_headpose.o
+fsanet_headpose_onnxruntime.o: fsanet_headpose_onnxruntime.cpp.o
+.PHONY : fsanet_headpose_onnxruntime.o
 
 # target to build an object file
-fsanet_headpose.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/fsanet_headpose.cpp.o
-.PHONY : fsanet_headpose.cpp.o
+fsanet_headpose_onnxruntime.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/fsanet_headpose_onnxruntime.cpp.o
+.PHONY : fsanet_headpose_onnxruntime.cpp.o
 
-fsanet_headpose.i: fsanet_headpose.cpp.i
-.PHONY : fsanet_headpose.i
+fsanet_headpose_onnxruntime.i: fsanet_headpose_onnxruntime.cpp.i
+.PHONY : fsanet_headpose_onnxruntime.i
 
 # target to preprocess a source file
-fsanet_headpose.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/fsanet_headpose.cpp.i
-.PHONY : fsanet_headpose.cpp.i
+fsanet_headpose_onnxruntime.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/fsanet_headpose_onnxruntime.cpp.i
+.PHONY : fsanet_headpose_onnxruntime.cpp.i
 
-fsanet_headpose.s: fsanet_headpose.cpp.s
-.PHONY : fsanet_headpose.s
+fsanet_headpose_onnxruntime.s: fsanet_headpose_onnxruntime.cpp.s
+.PHONY : fsanet_headpose_onnxruntime.s
 
 # target to generate assembly for a file
-fsanet_headpose.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/fsanet_headpose.cpp.s
-.PHONY : fsanet_headpose.cpp.s
+fsanet_headpose_onnxruntime.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/fsanet_headpose_onnxruntime.cpp.s
+.PHONY : fsanet_headpose_onnxruntime.cpp.s
 
-gender_googlenet.o: gender_googlenet.cpp.o
-.PHONY : gender_googlenet.o
+gender_googlenet_onnxruntime.o: gender_googlenet_onnxruntime.cpp.o
+.PHONY : gender_googlenet_onnxruntime.o
 
 # target to build an object file
-gender_googlenet.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet.cpp.o
-.PHONY : gender_googlenet.cpp.o
+gender_googlenet_onnxruntime.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet_onnxruntime.cpp.o
+.PHONY : gender_googlenet_onnxruntime.cpp.o
 
-gender_googlenet.i: gender_googlenet.cpp.i
-.PHONY : gender_googlenet.i
+gender_googlenet_onnxruntime.i: gender_googlenet_onnxruntime.cpp.i
+.PHONY : gender_googlenet_onnxruntime.i
 
 # target to preprocess a source file
-gender_googlenet.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet.cpp.i
-.PHONY : gender_googlenet.cpp.i
+gender_googlenet_onnxruntime.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet_onnxruntime.cpp.i
+.PHONY : gender_googlenet_onnxruntime.cpp.i
 
-gender_googlenet.s: gender_googlenet.cpp.s
-.PHONY : gender_googlenet.s
+gender_googlenet_onnxruntime.s: gender_googlenet_onnxruntime.cpp.s
+.PHONY : gender_googlenet_onnxruntime.s
 
 # target to generate assembly for a file
-gender_googlenet.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet.cpp.s
-.PHONY : gender_googlenet.cpp.s
+gender_googlenet_onnxruntime.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet_onnxruntime.cpp.s
+.PHONY : gender_googlenet_onnxruntime.cpp.s
 
-mnist.o: mnist.cpp.o
-.PHONY : mnist.o
+mnist_onnxruntime.o: mnist_onnxruntime.cpp.o
+.PHONY : mnist_onnxruntime.o
 
 # target to build an object file
-mnist.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.o
-.PHONY : mnist.cpp.o
+mnist_onnxruntime.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist_onnxruntime.cpp.o
+.PHONY : mnist_onnxruntime.cpp.o
 
-mnist.i: mnist.cpp.i
-.PHONY : mnist.i
+mnist_onnxruntime.i: mnist_onnxruntime.cpp.i
+.PHONY : mnist_onnxruntime.i
 
 # target to preprocess a source file
-mnist.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.i
-.PHONY : mnist.cpp.i
+mnist_onnxruntime.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist_onnxruntime.cpp.i
+.PHONY : mnist_onnxruntime.cpp.i
 
-mnist.s: mnist.cpp.s
-.PHONY : mnist.s
+mnist_onnxruntime.s: mnist_onnxruntime.cpp.s
+.PHONY : mnist_onnxruntime.s
 
 # target to generate assembly for a file
-mnist.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.s
-.PHONY : mnist.cpp.s
+mnist_onnxruntime.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist_onnxruntime.cpp.s
+.PHONY : mnist_onnxruntime.cpp.s
 
-pfld_landmarks.o: pfld_landmarks.cpp.o
-.PHONY : pfld_landmarks.o
+pfld_landmarks_onnxruntime.o: pfld_landmarks_onnxruntime.cpp.o
+.PHONY : pfld_landmarks_onnxruntime.o
 
 # target to build an object file
-pfld_landmarks.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/pfld_landmarks.cpp.o
-.PHONY : pfld_landmarks.cpp.o
+pfld_landmarks_onnxruntime.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/pfld_landmarks_onnxruntime.cpp.o
+.PHONY : pfld_landmarks_onnxruntime.cpp.o
 
-pfld_landmarks.i: pfld_landmarks.cpp.i
-.PHONY : pfld_landmarks.i
+pfld_landmarks_onnxruntime.i: pfld_landmarks_onnxruntime.cpp.i
+.PHONY : pfld_landmarks_onnxruntime.i
 
 # target to preprocess a source file
-pfld_landmarks.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/pfld_landmarks.cpp.i
-.PHONY : pfld_landmarks.cpp.i
+pfld_landmarks_onnxruntime.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/pfld_landmarks_onnxruntime.cpp.i
+.PHONY : pfld_landmarks_onnxruntime.cpp.i
 
-pfld_landmarks.s: pfld_landmarks.cpp.s
-.PHONY : pfld_landmarks.s
+pfld_landmarks_onnxruntime.s: pfld_landmarks_onnxruntime.cpp.s
+.PHONY : pfld_landmarks_onnxruntime.s
 
 # target to generate assembly for a file
-pfld_landmarks.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/pfld_landmarks.cpp.s
-.PHONY : pfld_landmarks.cpp.s
+pfld_landmarks_onnxruntime.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/pfld_landmarks_onnxruntime.cpp.s
+.PHONY : pfld_landmarks_onnxruntime.cpp.s
 
-ssrnet_age.o: ssrnet_age.cpp.o
-.PHONY : ssrnet_age.o
+ssrnet_age_onnxruntime.o: ssrnet_age_onnxruntime.cpp.o
+.PHONY : ssrnet_age_onnxruntime.o
 
 # target to build an object file
-ssrnet_age.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/ssrnet_age.cpp.o
-.PHONY : ssrnet_age.cpp.o
+ssrnet_age_onnxruntime.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/ssrnet_age_onnxruntime.cpp.o
+.PHONY : ssrnet_age_onnxruntime.cpp.o
 
-ssrnet_age.i: ssrnet_age.cpp.i
-.PHONY : ssrnet_age.i
+ssrnet_age_onnxruntime.i: ssrnet_age_onnxruntime.cpp.i
+.PHONY : ssrnet_age_onnxruntime.i
 
 # target to preprocess a source file
-ssrnet_age.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/ssrnet_age.cpp.i
-.PHONY : ssrnet_age.cpp.i
+ssrnet_age_onnxruntime.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/ssrnet_age_onnxruntime.cpp.i
+.PHONY : ssrnet_age_onnxruntime.cpp.i
 
-ssrnet_age.s: ssrnet_age.cpp.s
-.PHONY : ssrnet_age.s
+ssrnet_age_onnxruntime.s: ssrnet_age_onnxruntime.cpp.s
+.PHONY : ssrnet_age_onnxruntime.s
 
 # target to generate assembly for a file
-ssrnet_age.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/ssrnet_age.cpp.s
-.PHONY : ssrnet_age.cpp.s
+ssrnet_age_onnxruntime.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/ssrnet_age_onnxruntime.cpp.s
+.PHONY : ssrnet_age_onnxruntime.cpp.s
 
-ultraface_detector.o: ultraface_detector.cpp.o
-.PHONY : ultraface_detector.o
+ultraface_detector_onnxruntime.o: ultraface_detector_onnxruntime.cpp.o
+.PHONY : ultraface_detector_onnxruntime.o
 
 # target to build an object file
-ultraface_detector.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o
-.PHONY : ultraface_detector.cpp.o
+ultraface_detector_onnxruntime.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o
+.PHONY : ultraface_detector_onnxruntime.cpp.o
 
-ultraface_detector.i: ultraface_detector.cpp.i
-.PHONY : ultraface_detector.i
+ultraface_detector_onnxruntime.i: ultraface_detector_onnxruntime.cpp.i
+.PHONY : ultraface_detector_onnxruntime.i
 
 # target to preprocess a source file
-ultraface_detector.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.i
-.PHONY : ultraface_detector.cpp.i
+ultraface_detector_onnxruntime.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.i
+.PHONY : ultraface_detector_onnxruntime.cpp.i
 
-ultraface_detector.s: ultraface_detector.cpp.s
-.PHONY : ultraface_detector.s
+ultraface_detector_onnxruntime.s: ultraface_detector_onnxruntime.cpp.s
+.PHONY : ultraface_detector_onnxruntime.s
 
 # target to generate assembly for a file
-ultraface_detector.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.s
-.PHONY : ultraface_detector.cpp.s
+ultraface_detector_onnxruntime.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.s
+.PHONY : ultraface_detector_onnxruntime.cpp.s
 
-yolov5_detector.o: yolov5_detector.cpp.o
-.PHONY : yolov5_detector.o
+yolov5_detector_onnxruntime.o: yolov5_detector_onnxruntime.cpp.o
+.PHONY : yolov5_detector_onnxruntime.o
 
 # target to build an object file
-yolov5_detector.cpp.o:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/yolov5_detector.cpp.o
-.PHONY : yolov5_detector.cpp.o
+yolov5_detector_onnxruntime.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/yolov5_detector_onnxruntime.cpp.o
+.PHONY : yolov5_detector_onnxruntime.cpp.o
 
-yolov5_detector.i: yolov5_detector.cpp.i
-.PHONY : yolov5_detector.i
+yolov5_detector_onnxruntime.i: yolov5_detector_onnxruntime.cpp.i
+.PHONY : yolov5_detector_onnxruntime.i
 
 # target to preprocess a source file
-yolov5_detector.cpp.i:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/yolov5_detector.cpp.i
-.PHONY : yolov5_detector.cpp.i
+yolov5_detector_onnxruntime.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/yolov5_detector_onnxruntime.cpp.i
+.PHONY : yolov5_detector_onnxruntime.cpp.i
 
-yolov5_detector.s: yolov5_detector.cpp.s
-.PHONY : yolov5_detector.s
+yolov5_detector_onnxruntime.s: yolov5_detector_onnxruntime.cpp.s
+.PHONY : yolov5_detector_onnxruntime.s
 
 # target to generate assembly for a file
-yolov5_detector.cpp.s:
-	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/yolov5_detector.cpp.s
-.PHONY : yolov5_detector.cpp.s
+yolov5_detector_onnxruntime.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/yolov5_detector_onnxruntime.cpp.s
+.PHONY : yolov5_detector_onnxruntime.cpp.s
 
 # Help Target
 help:
@@ -466,8 +466,8 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... age_googlenet_onnxruntime"
 	@echo "... emotion_ferplus_onnxruntime"
-	@echo "... example_onnxruntime"
 	@echo "... fsanet_headpose_onnxruntime"
 	@echo "... gender_googlenet_onnxruntime"
 	@echo "... mnist_onnxruntime"
@@ -475,33 +475,33 @@ help:
 	@echo "... ssrnet_age_onnxruntime"
 	@echo "... ultraface_detector_onnxruntime"
 	@echo "... yolov5_detector_onnxruntime"
-	@echo "... emotion_ferplus.o"
-	@echo "... emotion_ferplus.i"
-	@echo "... emotion_ferplus.s"
-	@echo "... example.o"
-	@echo "... example.i"
-	@echo "... example.s"
-	@echo "... fsanet_headpose.o"
-	@echo "... fsanet_headpose.i"
-	@echo "... fsanet_headpose.s"
-	@echo "... gender_googlenet.o"
-	@echo "... gender_googlenet.i"
-	@echo "... gender_googlenet.s"
-	@echo "... mnist.o"
-	@echo "... mnist.i"
-	@echo "... mnist.s"
-	@echo "... pfld_landmarks.o"
-	@echo "... pfld_landmarks.i"
-	@echo "... pfld_landmarks.s"
-	@echo "... ssrnet_age.o"
-	@echo "... ssrnet_age.i"
-	@echo "... ssrnet_age.s"
-	@echo "... ultraface_detector.o"
-	@echo "... ultraface_detector.i"
-	@echo "... ultraface_detector.s"
-	@echo "... yolov5_detector.o"
-	@echo "... yolov5_detector.i"
-	@echo "... yolov5_detector.s"
+	@echo "... age_googlenet_onnxruntime.o"
+	@echo "... age_googlenet_onnxruntime.i"
+	@echo "... age_googlenet_onnxruntime.s"
+	@echo "... emotion_ferplus_onnxruntime.o"
+	@echo "... emotion_ferplus_onnxruntime.i"
+	@echo "... emotion_ferplus_onnxruntime.s"
+	@echo "... fsanet_headpose_onnxruntime.o"
+	@echo "... fsanet_headpose_onnxruntime.i"
+	@echo "... fsanet_headpose_onnxruntime.s"
+	@echo "... gender_googlenet_onnxruntime.o"
+	@echo "... gender_googlenet_onnxruntime.i"
+	@echo "... gender_googlenet_onnxruntime.s"
+	@echo "... mnist_onnxruntime.o"
+	@echo "... mnist_onnxruntime.i"
+	@echo "... mnist_onnxruntime.s"
+	@echo "... pfld_landmarks_onnxruntime.o"
+	@echo "... pfld_landmarks_onnxruntime.i"
+	@echo "... pfld_landmarks_onnxruntime.s"
+	@echo "... ssrnet_age_onnxruntime.o"
+	@echo "... ssrnet_age_onnxruntime.i"
+	@echo "... ssrnet_age_onnxruntime.s"
+	@echo "... ultraface_detector_onnxruntime.o"
+	@echo "... ultraface_detector_onnxruntime.i"
+	@echo "... ultraface_detector_onnxruntime.s"
+	@echo "... yolov5_detector_onnxruntime.o"
+	@echo "... yolov5_detector_onnxruntime.i"
+	@echo "... yolov5_detector_onnxruntime.s"
 .PHONY : help
 
 

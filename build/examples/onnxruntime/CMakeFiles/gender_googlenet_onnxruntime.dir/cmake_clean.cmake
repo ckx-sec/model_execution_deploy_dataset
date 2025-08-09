@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "../../bin/gender_googlenet_onnxruntime"
   "../../bin/gender_googlenet_onnxruntime.pdb"
-  "CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet.cpp.o"
-  "CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet.cpp.o.d"
+  "CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet_onnxruntime.cpp.o"
+  "CMakeFiles/gender_googlenet_onnxruntime.dir/gender_googlenet_onnxruntime.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/app/examples/onnxruntime/mnist.cpp" "examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.o" "gcc" "examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.o.d"
+  "/app/examples/onnxruntime/mnist_onnxruntime.cpp" "examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist_onnxruntime.cpp.o" "gcc" "examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/mnist_onnxruntime.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -69,28 +69,28 @@ include examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/progr
 # Include the compile flags for this target's objects.
 include examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/flags.make
 
-examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o: examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/flags.make
-examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o: /app/examples/onnxruntime/ultraface_detector.cpp
-examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o: examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o"
-	cd /app/build/examples/onnxruntime && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o -MF CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o.d -o CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o -c /app/examples/onnxruntime/ultraface_detector.cpp
+examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o: examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/flags.make
+examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o: /app/examples/onnxruntime/ultraface_detector_onnxruntime.cpp
+examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o: examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/app/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o"
+	cd /app/build/examples/onnxruntime && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o -MF CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o.d -o CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o -c /app/examples/onnxruntime/ultraface_detector_onnxruntime.cpp
 
-examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.i"
-	cd /app/build/examples/onnxruntime && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /app/examples/onnxruntime/ultraface_detector.cpp > CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.i
+examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.i"
+	cd /app/build/examples/onnxruntime && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /app/examples/onnxruntime/ultraface_detector_onnxruntime.cpp > CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.i
 
-examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.s"
-	cd /app/build/examples/onnxruntime && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /app/examples/onnxruntime/ultraface_detector.cpp -o CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.s
+examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.s"
+	cd /app/build/examples/onnxruntime && /usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /app/examples/onnxruntime/ultraface_detector_onnxruntime.cpp -o CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.s
 
 # Object files for target ultraface_detector_onnxruntime
 ultraface_detector_onnxruntime_OBJECTS = \
-"CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o"
+"CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o"
 
 # External object files for target ultraface_detector_onnxruntime
 ultraface_detector_onnxruntime_EXTERNAL_OBJECTS =
 
-bin/ultraface_detector_onnxruntime: examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o
+bin/ultraface_detector_onnxruntime: examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o
 bin/ultraface_detector_onnxruntime: examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build.make
 bin/ultraface_detector_onnxruntime: src/libmodel_deploy_dataset_lib.so
 bin/ultraface_detector_onnxruntime: /usr/lib/aarch64-linux-gnu/libopencv_highgui.so.4.6.0

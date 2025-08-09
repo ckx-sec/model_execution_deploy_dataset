@@ -11,6 +11,10 @@ if(MEI_ENABLE_TNN)
     add_subdirectory(tnn)
 endif()
 
+if(MEI_ENABLE_TFLITE)
+    add_subdirectory(tflite)
+endif()
+
 # Copy assets to the build directory
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 set(ASSETS_DIR ${CMAKE_SOURCE_DIR}/assets)

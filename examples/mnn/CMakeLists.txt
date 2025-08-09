@@ -1,14 +1,14 @@
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${EXECUTABLE_OUTPUT_PATH})
 
-add_executable(example_mnn example_mnn.cpp)
-target_link_libraries(example_mnn PRIVATE
+add_executable(age_googlenet_mnn age_googlenet_mnn.cpp)
+target_link_libraries(age_googlenet_mnn PRIVATE
     model_deploy_dataset_lib
     ${OpenCV_LIBRARIES}
     MNN::MNN
 )
-target_include_directories(example_mnn PRIVATE ${OpenCV_INCLUDE_DIRS})
-add_dependencies(example_mnn clean_assets)
+target_include_directories(age_googlenet_mnn PRIVATE ${OpenCV_INCLUDE_DIRS})
+add_dependencies(age_googlenet_mnn clean_assets)
 
 add_executable(ultraface_detector_mnn ultraface_detector_mnn.cpp)
 target_link_libraries(ultraface_detector_mnn PRIVATE model_deploy_dataset_lib ${OpenCV_LIBRARIES} MNN::MNN)

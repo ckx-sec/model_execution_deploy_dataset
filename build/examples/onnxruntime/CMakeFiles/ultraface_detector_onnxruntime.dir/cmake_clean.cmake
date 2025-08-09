@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "../../bin/ultraface_detector_onnxruntime"
   "../../bin/ultraface_detector_onnxruntime.pdb"
-  "CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o"
-  "CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector.cpp.o.d"
+  "CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o"
+  "CMakeFiles/ultraface_detector_onnxruntime.dir/ultraface_detector_onnxruntime.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

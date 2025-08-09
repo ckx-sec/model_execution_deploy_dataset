@@ -143,17 +143,17 @@ clean_assets/fast:
 .PHONY : clean_assets/fast
 
 #=============================================================================
-# Target rules for targets named example_onnxruntime
+# Target rules for targets named age_googlenet_onnxruntime
 
 # Build rule for target.
-example_onnxruntime: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example_onnxruntime
-.PHONY : example_onnxruntime
+age_googlenet_onnxruntime: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 age_googlenet_onnxruntime
+.PHONY : age_googlenet_onnxruntime
 
 # fast build rule for target.
-example_onnxruntime/fast:
-	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build
-.PHONY : example_onnxruntime/fast
+age_googlenet_onnxruntime/fast:
+	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build
+.PHONY : age_googlenet_onnxruntime/fast
 
 #=============================================================================
 # Target rules for targets named ultraface_detector_onnxruntime
@@ -260,17 +260,17 @@ mnist_onnxruntime/fast:
 .PHONY : mnist_onnxruntime/fast
 
 #=============================================================================
-# Target rules for targets named example_mnn
+# Target rules for targets named age_googlenet_mnn
 
 # Build rule for target.
-example_mnn: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 example_mnn
-.PHONY : example_mnn
+age_googlenet_mnn: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 age_googlenet_mnn
+.PHONY : age_googlenet_mnn
 
 # fast build rule for target.
-example_mnn/fast:
-	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/example_mnn.dir/build.make examples/mnn/CMakeFiles/example_mnn.dir/build
-.PHONY : example_mnn/fast
+age_googlenet_mnn/fast:
+	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build
+.PHONY : age_googlenet_mnn/fast
 
 #=============================================================================
 # Target rules for targets named ultraface_detector_mnn
@@ -558,6 +558,123 @@ yolov5_detector_tnn/fast:
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/build.make examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/build
 .PHONY : yolov5_detector_tnn/fast
 
+#=============================================================================
+# Target rules for targets named age_googlenet_tflite
+
+# Build rule for target.
+age_googlenet_tflite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 age_googlenet_tflite
+.PHONY : age_googlenet_tflite
+
+# fast build rule for target.
+age_googlenet_tflite/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/age_googlenet_tflite.dir/build.make examples/tflite/CMakeFiles/age_googlenet_tflite.dir/build
+.PHONY : age_googlenet_tflite/fast
+
+#=============================================================================
+# Target rules for targets named emotion_ferplus_tflite
+
+# Build rule for target.
+emotion_ferplus_tflite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 emotion_ferplus_tflite
+.PHONY : emotion_ferplus_tflite
+
+# fast build rule for target.
+emotion_ferplus_tflite/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/build.make examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/build
+.PHONY : emotion_ferplus_tflite/fast
+
+#=============================================================================
+# Target rules for targets named fsanet_headpose_tflite
+
+# Build rule for target.
+fsanet_headpose_tflite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fsanet_headpose_tflite
+.PHONY : fsanet_headpose_tflite
+
+# fast build rule for target.
+fsanet_headpose_tflite/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/build.make examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/build
+.PHONY : fsanet_headpose_tflite/fast
+
+#=============================================================================
+# Target rules for targets named gender_googlenet_tflite
+
+# Build rule for target.
+gender_googlenet_tflite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gender_googlenet_tflite
+.PHONY : gender_googlenet_tflite
+
+# fast build rule for target.
+gender_googlenet_tflite/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/build.make examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/build
+.PHONY : gender_googlenet_tflite/fast
+
+#=============================================================================
+# Target rules for targets named mnist_tflite
+
+# Build rule for target.
+mnist_tflite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 mnist_tflite
+.PHONY : mnist_tflite
+
+# fast build rule for target.
+mnist_tflite/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/mnist_tflite.dir/build.make examples/tflite/CMakeFiles/mnist_tflite.dir/build
+.PHONY : mnist_tflite/fast
+
+#=============================================================================
+# Target rules for targets named pfld_landmarks_tflite
+
+# Build rule for target.
+pfld_landmarks_tflite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pfld_landmarks_tflite
+.PHONY : pfld_landmarks_tflite
+
+# fast build rule for target.
+pfld_landmarks_tflite/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/build.make examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/build
+.PHONY : pfld_landmarks_tflite/fast
+
+#=============================================================================
+# Target rules for targets named ssrnet_age_tflite
+
+# Build rule for target.
+ssrnet_age_tflite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ssrnet_age_tflite
+.PHONY : ssrnet_age_tflite
+
+# fast build rule for target.
+ssrnet_age_tflite/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/build.make examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/build
+.PHONY : ssrnet_age_tflite/fast
+
+#=============================================================================
+# Target rules for targets named ultraface_detector_tflite
+
+# Build rule for target.
+ultraface_detector_tflite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ultraface_detector_tflite
+.PHONY : ultraface_detector_tflite
+
+# fast build rule for target.
+ultraface_detector_tflite/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/build.make examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/build
+.PHONY : ultraface_detector_tflite/fast
+
+#=============================================================================
+# Target rules for targets named yolov5_detector_tflite
+
+# Build rule for target.
+yolov5_detector_tflite: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 yolov5_detector_tflite
+.PHONY : yolov5_detector_tflite
+
+# fast build rule for target.
+yolov5_detector_tflite/fast:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/build.make examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/build
+.PHONY : yolov5_detector_tflite/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -567,38 +684,47 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... clean_assets"
+	@echo "... age_googlenet_mnn"
+	@echo "... age_googlenet_onnxruntime"
+	@echo "... age_googlenet_tflite"
 	@echo "... emotion_ferplus_mnn"
 	@echo "... emotion_ferplus_ncnn"
 	@echo "... emotion_ferplus_onnxruntime"
+	@echo "... emotion_ferplus_tflite"
 	@echo "... emotion_ferplus_tnn"
-	@echo "... example_mnn"
-	@echo "... example_onnxruntime"
 	@echo "... fsanet_headpose_mnn"
 	@echo "... fsanet_headpose_ncnn"
 	@echo "... fsanet_headpose_onnxruntime"
+	@echo "... fsanet_headpose_tflite"
 	@echo "... fsanet_headpose_tnn"
 	@echo "... gender_googlenet_mnn"
 	@echo "... gender_googlenet_ncnn"
 	@echo "... gender_googlenet_onnxruntime"
+	@echo "... gender_googlenet_tflite"
 	@echo "... gender_googlenet_tnn"
 	@echo "... mnist_ncnn"
 	@echo "... mnist_onnxruntime"
+	@echo "... mnist_tflite"
 	@echo "... model_deploy_dataset_lib"
 	@echo "... pfld_landmarks_mnn"
 	@echo "... pfld_landmarks_ncnn"
 	@echo "... pfld_landmarks_onnxruntime"
+	@echo "... pfld_landmarks_tflite"
 	@echo "... pfld_landmarks_tnn"
 	@echo "... ssrnet_age_mnn"
 	@echo "... ssrnet_age_ncnn"
 	@echo "... ssrnet_age_onnxruntime"
+	@echo "... ssrnet_age_tflite"
 	@echo "... ssrnet_age_tnn"
 	@echo "... ultraface_detector_mnn"
 	@echo "... ultraface_detector_ncnn"
 	@echo "... ultraface_detector_onnxruntime"
+	@echo "... ultraface_detector_tflite"
 	@echo "... ultraface_detector_tnn"
 	@echo "... yolov5_detector_mnn"
 	@echo "... yolov5_detector_ncnn"
 	@echo "... yolov5_detector_onnxruntime"
+	@echo "... yolov5_detector_tflite"
 	@echo "... yolov5_detector_tnn"
 .PHONY : help
 

@@ -85,6 +85,7 @@ examples/all: examples/onnxruntime/all
 examples/all: examples/mnn/all
 examples/all: examples/ncnn/all
 examples/all: examples/tnn/all
+examples/all: examples/tflite/all
 .PHONY : examples/all
 
 # Recursive "preinstall" directory target.
@@ -92,6 +93,7 @@ examples/preinstall: examples/onnxruntime/preinstall
 examples/preinstall: examples/mnn/preinstall
 examples/preinstall: examples/ncnn/preinstall
 examples/preinstall: examples/tnn/preinstall
+examples/preinstall: examples/tflite/preinstall
 .PHONY : examples/preinstall
 
 # Recursive "clean" directory target.
@@ -100,13 +102,14 @@ examples/clean: examples/onnxruntime/clean
 examples/clean: examples/mnn/clean
 examples/clean: examples/ncnn/clean
 examples/clean: examples/tnn/clean
+examples/clean: examples/tflite/clean
 .PHONY : examples/clean
 
 #=============================================================================
 # Directory level rules for directory examples/mnn
 
 # Recursive "all" directory target.
-examples/mnn/all: examples/mnn/CMakeFiles/example_mnn.dir/all
+examples/mnn/all: examples/mnn/CMakeFiles/age_googlenet_mnn.dir/all
 examples/mnn/all: examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/all
 examples/mnn/all: examples/mnn/CMakeFiles/yolov5_detector_mnn.dir/all
 examples/mnn/all: examples/mnn/CMakeFiles/pfld_landmarks_mnn.dir/all
@@ -121,7 +124,7 @@ examples/mnn/preinstall:
 .PHONY : examples/mnn/preinstall
 
 # Recursive "clean" directory target.
-examples/mnn/clean: examples/mnn/CMakeFiles/example_mnn.dir/clean
+examples/mnn/clean: examples/mnn/CMakeFiles/age_googlenet_mnn.dir/clean
 examples/mnn/clean: examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/clean
 examples/mnn/clean: examples/mnn/CMakeFiles/yolov5_detector_mnn.dir/clean
 examples/mnn/clean: examples/mnn/CMakeFiles/pfld_landmarks_mnn.dir/clean
@@ -164,7 +167,7 @@ examples/ncnn/clean: examples/ncnn/CMakeFiles/mnist_ncnn.dir/clean
 # Directory level rules for directory examples/onnxruntime
 
 # Recursive "all" directory target.
-examples/onnxruntime/all: examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/all
+examples/onnxruntime/all: examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/all
 examples/onnxruntime/all: examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/all
 examples/onnxruntime/all: examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/all
 examples/onnxruntime/all: examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/all
@@ -180,7 +183,7 @@ examples/onnxruntime/preinstall:
 .PHONY : examples/onnxruntime/preinstall
 
 # Recursive "clean" directory target.
-examples/onnxruntime/clean: examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/clean
+examples/onnxruntime/clean: examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/clean
 examples/onnxruntime/clean: examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/clean
 examples/onnxruntime/clean: examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/clean
 examples/onnxruntime/clean: examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/clean
@@ -190,6 +193,37 @@ examples/onnxruntime/clean: examples/onnxruntime/CMakeFiles/ssrnet_age_onnxrunti
 examples/onnxruntime/clean: examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/clean
 examples/onnxruntime/clean: examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/clean
 .PHONY : examples/onnxruntime/clean
+
+#=============================================================================
+# Directory level rules for directory examples/tflite
+
+# Recursive "all" directory target.
+examples/tflite/all: examples/tflite/CMakeFiles/age_googlenet_tflite.dir/all
+examples/tflite/all: examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/all
+examples/tflite/all: examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/all
+examples/tflite/all: examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/all
+examples/tflite/all: examples/tflite/CMakeFiles/mnist_tflite.dir/all
+examples/tflite/all: examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/all
+examples/tflite/all: examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/all
+examples/tflite/all: examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/all
+examples/tflite/all: examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/all
+.PHONY : examples/tflite/all
+
+# Recursive "preinstall" directory target.
+examples/tflite/preinstall:
+.PHONY : examples/tflite/preinstall
+
+# Recursive "clean" directory target.
+examples/tflite/clean: examples/tflite/CMakeFiles/age_googlenet_tflite.dir/clean
+examples/tflite/clean: examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/clean
+examples/tflite/clean: examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/clean
+examples/tflite/clean: examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/clean
+examples/tflite/clean: examples/tflite/CMakeFiles/mnist_tflite.dir/clean
+examples/tflite/clean: examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/clean
+examples/tflite/clean: examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/clean
+examples/tflite/clean: examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/clean
+examples/tflite/clean: examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/clean
+.PHONY : examples/tflite/clean
 
 #=============================================================================
 # Directory level rules for directory examples/tnn
@@ -240,7 +274,7 @@ src/clean: src/CMakeFiles/model_deploy_dataset_lib.dir/clean
 src/CMakeFiles/model_deploy_dataset_lib.dir/all:
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/model_deploy_dataset_lib.dir/build.make src/CMakeFiles/model_deploy_dataset_lib.dir/depend
 	$(MAKE) $(MAKESILENT) -f src/CMakeFiles/model_deploy_dataset_lib.dir/build.make src/CMakeFiles/model_deploy_dataset_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=34,35 "Built target model_deploy_dataset_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=44,45 "Built target model_deploy_dataset_lib"
 .PHONY : src/CMakeFiles/model_deploy_dataset_lib.dir/all
 
 # Build rule for subdir invocation for target.
@@ -266,7 +300,7 @@ src/CMakeFiles/model_deploy_dataset_lib.dir/clean:
 examples/CMakeFiles/clean_assets.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/clean_assets.dir/build.make examples/CMakeFiles/clean_assets.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/CMakeFiles/clean_assets.dir/build.make examples/CMakeFiles/clean_assets.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=1 "Built target clean_assets"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=7 "Built target clean_assets"
 .PHONY : examples/CMakeFiles/clean_assets.dir/all
 
 # Build rule for subdir invocation for target.
@@ -286,30 +320,30 @@ examples/CMakeFiles/clean_assets.dir/clean:
 .PHONY : examples/CMakeFiles/clean_assets.dir/clean
 
 #=============================================================================
-# Target rules for target examples/onnxruntime/CMakeFiles/example_onnxruntime.dir
+# Target rules for target examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir
 
 # All Build rule for target.
-examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
-	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/depend
-	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=12,13 "Built target example_onnxruntime"
-.PHONY : examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/all
+examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=3,4 "Built target age_googlenet_onnxruntime"
+.PHONY : examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/all
 
 # Build rule for subdir invocation for target.
-examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/rule: cmake_check_build_system
+examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
-.PHONY : examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/rule
+.PHONY : examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/rule
 
 # Convenience name for target.
-example_onnxruntime: examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/rule
-.PHONY : example_onnxruntime
+age_googlenet_onnxruntime: examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/rule
+.PHONY : age_googlenet_onnxruntime
 
 # clean rule for target.
-examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/clean:
-	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/clean
-.PHONY : examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/clean
+examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/clean
+.PHONY : examples/onnxruntime/CMakeFiles/age_googlenet_onnxruntime.dir/clean
 
 #=============================================================================
 # Target rules for target examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir
@@ -318,7 +352,7 @@ examples/onnxruntime/CMakeFiles/example_onnxruntime.dir/clean:
 examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=56,57 "Built target ultraface_detector_onnxruntime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=70,71 "Built target ultraface_detector_onnxruntime"
 .PHONY : examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/all
 
 # Build rule for subdir invocation for target.
@@ -344,7 +378,7 @@ examples/onnxruntime/CMakeFiles/ultraface_detector_onnxruntime.dir/clean:
 examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=64,65 "Built target yolov5_detector_onnxruntime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=80,81 "Built target yolov5_detector_onnxruntime"
 .PHONY : examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/all
 
 # Build rule for subdir invocation for target.
@@ -370,7 +404,7 @@ examples/onnxruntime/CMakeFiles/yolov5_detector_onnxruntime.dir/clean:
 examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=6,7 "Built target emotion_ferplus_onnxruntime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=12,13 "Built target emotion_ferplus_onnxruntime"
 .PHONY : examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/all
 
 # Build rule for subdir invocation for target.
@@ -396,7 +430,7 @@ examples/onnxruntime/CMakeFiles/emotion_ferplus_onnxruntime.dir/clean:
 examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=18,19 "Built target fsanet_headpose_onnxruntime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=22,23 "Built target fsanet_headpose_onnxruntime"
 .PHONY : examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/all
 
 # Build rule for subdir invocation for target.
@@ -422,7 +456,7 @@ examples/onnxruntime/CMakeFiles/fsanet_headpose_onnxruntime.dir/clean:
 examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=26,27 "Built target gender_googlenet_onnxruntime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=32,33 "Built target gender_googlenet_onnxruntime"
 .PHONY : examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/all
 
 # Build rule for subdir invocation for target.
@@ -448,7 +482,7 @@ examples/onnxruntime/CMakeFiles/gender_googlenet_onnxruntime.dir/clean:
 examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=48,49 "Built target ssrnet_age_onnxruntime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=60,61 "Built target ssrnet_age_onnxruntime"
 .PHONY : examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/all
 
 # Build rule for subdir invocation for target.
@@ -474,7 +508,7 @@ examples/onnxruntime/CMakeFiles/ssrnet_age_onnxruntime.dir/clean:
 examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=40,41 "Built target pfld_landmarks_onnxruntime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=50,51 "Built target pfld_landmarks_onnxruntime"
 .PHONY : examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/all
 
 # Build rule for subdir invocation for target.
@@ -500,7 +534,7 @@ examples/onnxruntime/CMakeFiles/pfld_landmarks_onnxruntime.dir/clean:
 examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build.make examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=32,33 "Built target mnist_onnxruntime"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=40,41 "Built target mnist_onnxruntime"
 .PHONY : examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/all
 
 # Build rule for subdir invocation for target.
@@ -520,31 +554,31 @@ examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/clean:
 .PHONY : examples/onnxruntime/CMakeFiles/mnist_onnxruntime.dir/clean
 
 #=============================================================================
-# Target rules for target examples/mnn/CMakeFiles/example_mnn.dir
+# Target rules for target examples/mnn/CMakeFiles/age_googlenet_mnn.dir
 
 # All Build rule for target.
-examples/mnn/CMakeFiles/example_mnn.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
-examples/mnn/CMakeFiles/example_mnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
-	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/example_mnn.dir/build.make examples/mnn/CMakeFiles/example_mnn.dir/depend
-	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/example_mnn.dir/build.make examples/mnn/CMakeFiles/example_mnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=10,11 "Built target example_mnn"
-.PHONY : examples/mnn/CMakeFiles/example_mnn.dir/all
+examples/mnn/CMakeFiles/age_googlenet_mnn.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/mnn/CMakeFiles/age_googlenet_mnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/age_googlenet_mnn.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=1,2 "Built target age_googlenet_mnn"
+.PHONY : examples/mnn/CMakeFiles/age_googlenet_mnn.dir/all
 
 # Build rule for subdir invocation for target.
-examples/mnn/CMakeFiles/example_mnn.dir/rule: cmake_check_build_system
+examples/mnn/CMakeFiles/age_googlenet_mnn.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/mnn/CMakeFiles/example_mnn.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/mnn/CMakeFiles/age_googlenet_mnn.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
-.PHONY : examples/mnn/CMakeFiles/example_mnn.dir/rule
+.PHONY : examples/mnn/CMakeFiles/age_googlenet_mnn.dir/rule
 
 # Convenience name for target.
-example_mnn: examples/mnn/CMakeFiles/example_mnn.dir/rule
-.PHONY : example_mnn
+age_googlenet_mnn: examples/mnn/CMakeFiles/age_googlenet_mnn.dir/rule
+.PHONY : age_googlenet_mnn
 
 # clean rule for target.
-examples/mnn/CMakeFiles/example_mnn.dir/clean:
-	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/example_mnn.dir/build.make examples/mnn/CMakeFiles/example_mnn.dir/clean
-.PHONY : examples/mnn/CMakeFiles/example_mnn.dir/clean
+examples/mnn/CMakeFiles/age_googlenet_mnn.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/age_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/age_googlenet_mnn.dir/clean
+.PHONY : examples/mnn/CMakeFiles/age_googlenet_mnn.dir/clean
 
 #=============================================================================
 # Target rules for target examples/mnn/CMakeFiles/ultraface_detector_mnn.dir
@@ -554,7 +588,7 @@ examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/all: src/CMakeFiles/model_dep
 examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/build.make examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/build.make examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=52,53 "Built target ultraface_detector_mnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=66,67 "Built target ultraface_detector_mnn"
 .PHONY : examples/mnn/CMakeFiles/ultraface_detector_mnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -581,7 +615,7 @@ examples/mnn/CMakeFiles/yolov5_detector_mnn.dir/all: src/CMakeFiles/model_deploy
 examples/mnn/CMakeFiles/yolov5_detector_mnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/yolov5_detector_mnn.dir/build.make examples/mnn/CMakeFiles/yolov5_detector_mnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/yolov5_detector_mnn.dir/build.make examples/mnn/CMakeFiles/yolov5_detector_mnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=60,61 "Built target yolov5_detector_mnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=76,77 "Built target yolov5_detector_mnn"
 .PHONY : examples/mnn/CMakeFiles/yolov5_detector_mnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -608,7 +642,7 @@ examples/mnn/CMakeFiles/pfld_landmarks_mnn.dir/all: src/CMakeFiles/model_deploy_
 examples/mnn/CMakeFiles/pfld_landmarks_mnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/pfld_landmarks_mnn.dir/build.make examples/mnn/CMakeFiles/pfld_landmarks_mnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/pfld_landmarks_mnn.dir/build.make examples/mnn/CMakeFiles/pfld_landmarks_mnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=36,37 "Built target pfld_landmarks_mnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=46,47 "Built target pfld_landmarks_mnn"
 .PHONY : examples/mnn/CMakeFiles/pfld_landmarks_mnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -635,7 +669,7 @@ examples/mnn/CMakeFiles/fsanet_headpose_mnn.dir/all: src/CMakeFiles/model_deploy
 examples/mnn/CMakeFiles/fsanet_headpose_mnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/fsanet_headpose_mnn.dir/build.make examples/mnn/CMakeFiles/fsanet_headpose_mnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/fsanet_headpose_mnn.dir/build.make examples/mnn/CMakeFiles/fsanet_headpose_mnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=14,15 "Built target fsanet_headpose_mnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=18,19 "Built target fsanet_headpose_mnn"
 .PHONY : examples/mnn/CMakeFiles/fsanet_headpose_mnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -662,7 +696,7 @@ examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/all: src/CMakeFiles/model_deplo
 examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/build.make examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=22,23 "Built target gender_googlenet_mnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=28,29 "Built target gender_googlenet_mnn"
 .PHONY : examples/mnn/CMakeFiles/gender_googlenet_mnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -689,7 +723,7 @@ examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/all: src/CMakeFiles/model_deploy
 examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/build.make examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/build.make examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=2,3 "Built target emotion_ferplus_mnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=8,9 "Built target emotion_ferplus_mnn"
 .PHONY : examples/mnn/CMakeFiles/emotion_ferplus_mnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -716,7 +750,7 @@ examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/all: src/CMakeFiles/model_deploy_data
 examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/build.make examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/build.make examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=44,45 "Built target ssrnet_age_mnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=56,57 "Built target ssrnet_age_mnn"
 .PHONY : examples/mnn/CMakeFiles/ssrnet_age_mnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -743,7 +777,7 @@ examples/ncnn/CMakeFiles/ultraface_detector_ncnn.dir/all: src/CMakeFiles/model_d
 examples/ncnn/CMakeFiles/ultraface_detector_ncnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/ultraface_detector_ncnn.dir/build.make examples/ncnn/CMakeFiles/ultraface_detector_ncnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/ultraface_detector_ncnn.dir/build.make examples/ncnn/CMakeFiles/ultraface_detector_ncnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=54,55 "Built target ultraface_detector_ncnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=68,69 "Built target ultraface_detector_ncnn"
 .PHONY : examples/ncnn/CMakeFiles/ultraface_detector_ncnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -770,7 +804,7 @@ examples/ncnn/CMakeFiles/yolov5_detector_ncnn.dir/all: src/CMakeFiles/model_depl
 examples/ncnn/CMakeFiles/yolov5_detector_ncnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/yolov5_detector_ncnn.dir/build.make examples/ncnn/CMakeFiles/yolov5_detector_ncnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/yolov5_detector_ncnn.dir/build.make examples/ncnn/CMakeFiles/yolov5_detector_ncnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=62,63 "Built target yolov5_detector_ncnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=78,79 "Built target yolov5_detector_ncnn"
 .PHONY : examples/ncnn/CMakeFiles/yolov5_detector_ncnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -797,7 +831,7 @@ examples/ncnn/CMakeFiles/fsanet_headpose_ncnn.dir/all: src/CMakeFiles/model_depl
 examples/ncnn/CMakeFiles/fsanet_headpose_ncnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/fsanet_headpose_ncnn.dir/build.make examples/ncnn/CMakeFiles/fsanet_headpose_ncnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/fsanet_headpose_ncnn.dir/build.make examples/ncnn/CMakeFiles/fsanet_headpose_ncnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=16,17 "Built target fsanet_headpose_ncnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=20,21 "Built target fsanet_headpose_ncnn"
 .PHONY : examples/ncnn/CMakeFiles/fsanet_headpose_ncnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -824,7 +858,7 @@ examples/ncnn/CMakeFiles/gender_googlenet_ncnn.dir/all: src/CMakeFiles/model_dep
 examples/ncnn/CMakeFiles/gender_googlenet_ncnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/gender_googlenet_ncnn.dir/build.make examples/ncnn/CMakeFiles/gender_googlenet_ncnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/gender_googlenet_ncnn.dir/build.make examples/ncnn/CMakeFiles/gender_googlenet_ncnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=24,25 "Built target gender_googlenet_ncnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=30,31 "Built target gender_googlenet_ncnn"
 .PHONY : examples/ncnn/CMakeFiles/gender_googlenet_ncnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -851,7 +885,7 @@ examples/ncnn/CMakeFiles/emotion_ferplus_ncnn.dir/all: src/CMakeFiles/model_depl
 examples/ncnn/CMakeFiles/emotion_ferplus_ncnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/emotion_ferplus_ncnn.dir/build.make examples/ncnn/CMakeFiles/emotion_ferplus_ncnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/emotion_ferplus_ncnn.dir/build.make examples/ncnn/CMakeFiles/emotion_ferplus_ncnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=4,5 "Built target emotion_ferplus_ncnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=10,11 "Built target emotion_ferplus_ncnn"
 .PHONY : examples/ncnn/CMakeFiles/emotion_ferplus_ncnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -878,7 +912,7 @@ examples/ncnn/CMakeFiles/pfld_landmarks_ncnn.dir/all: src/CMakeFiles/model_deplo
 examples/ncnn/CMakeFiles/pfld_landmarks_ncnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/pfld_landmarks_ncnn.dir/build.make examples/ncnn/CMakeFiles/pfld_landmarks_ncnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/pfld_landmarks_ncnn.dir/build.make examples/ncnn/CMakeFiles/pfld_landmarks_ncnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=38,39 "Built target pfld_landmarks_ncnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=48,49 "Built target pfld_landmarks_ncnn"
 .PHONY : examples/ncnn/CMakeFiles/pfld_landmarks_ncnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -905,7 +939,7 @@ examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/all: src/CMakeFiles/model_deploy_da
 examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/build.make examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/build.make examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=46,47 "Built target ssrnet_age_ncnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=58,59 "Built target ssrnet_age_ncnn"
 .PHONY : examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -932,7 +966,7 @@ examples/ncnn/CMakeFiles/mnist_ncnn.dir/all: src/CMakeFiles/model_deploy_dataset
 examples/ncnn/CMakeFiles/mnist_ncnn.dir/all: examples/CMakeFiles/clean_assets.dir/all
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/mnist_ncnn.dir/build.make examples/ncnn/CMakeFiles/mnist_ncnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/mnist_ncnn.dir/build.make examples/ncnn/CMakeFiles/mnist_ncnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=30,31 "Built target mnist_ncnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=38,39 "Built target mnist_ncnn"
 .PHONY : examples/ncnn/CMakeFiles/mnist_ncnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -958,7 +992,7 @@ examples/ncnn/CMakeFiles/mnist_ncnn.dir/clean:
 examples/tnn/CMakeFiles/emotion_ferplus_tnn.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/emotion_ferplus_tnn.dir/build.make examples/tnn/CMakeFiles/emotion_ferplus_tnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/emotion_ferplus_tnn.dir/build.make examples/tnn/CMakeFiles/emotion_ferplus_tnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=8,9 "Built target emotion_ferplus_tnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=16,17 "Built target emotion_ferplus_tnn"
 .PHONY : examples/tnn/CMakeFiles/emotion_ferplus_tnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -984,7 +1018,7 @@ examples/tnn/CMakeFiles/emotion_ferplus_tnn.dir/clean:
 examples/tnn/CMakeFiles/fsanet_headpose_tnn.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/fsanet_headpose_tnn.dir/build.make examples/tnn/CMakeFiles/fsanet_headpose_tnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/fsanet_headpose_tnn.dir/build.make examples/tnn/CMakeFiles/fsanet_headpose_tnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=20,21 "Built target fsanet_headpose_tnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=26,27 "Built target fsanet_headpose_tnn"
 .PHONY : examples/tnn/CMakeFiles/fsanet_headpose_tnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1010,7 +1044,7 @@ examples/tnn/CMakeFiles/fsanet_headpose_tnn.dir/clean:
 examples/tnn/CMakeFiles/gender_googlenet_tnn.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/gender_googlenet_tnn.dir/build.make examples/tnn/CMakeFiles/gender_googlenet_tnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/gender_googlenet_tnn.dir/build.make examples/tnn/CMakeFiles/gender_googlenet_tnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=28,29 "Built target gender_googlenet_tnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=36,37 "Built target gender_googlenet_tnn"
 .PHONY : examples/tnn/CMakeFiles/gender_googlenet_tnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1036,7 +1070,7 @@ examples/tnn/CMakeFiles/gender_googlenet_tnn.dir/clean:
 examples/tnn/CMakeFiles/pfld_landmarks_tnn.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/pfld_landmarks_tnn.dir/build.make examples/tnn/CMakeFiles/pfld_landmarks_tnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/pfld_landmarks_tnn.dir/build.make examples/tnn/CMakeFiles/pfld_landmarks_tnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=42,43 "Built target pfld_landmarks_tnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=54,55 "Built target pfld_landmarks_tnn"
 .PHONY : examples/tnn/CMakeFiles/pfld_landmarks_tnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1062,7 +1096,7 @@ examples/tnn/CMakeFiles/pfld_landmarks_tnn.dir/clean:
 examples/tnn/CMakeFiles/ssrnet_age_tnn.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/ssrnet_age_tnn.dir/build.make examples/tnn/CMakeFiles/ssrnet_age_tnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/ssrnet_age_tnn.dir/build.make examples/tnn/CMakeFiles/ssrnet_age_tnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=50,51 "Built target ssrnet_age_tnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=64,65 "Built target ssrnet_age_tnn"
 .PHONY : examples/tnn/CMakeFiles/ssrnet_age_tnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1088,7 +1122,7 @@ examples/tnn/CMakeFiles/ssrnet_age_tnn.dir/clean:
 examples/tnn/CMakeFiles/ultraface_detector_tnn.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/ultraface_detector_tnn.dir/build.make examples/tnn/CMakeFiles/ultraface_detector_tnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/ultraface_detector_tnn.dir/build.make examples/tnn/CMakeFiles/ultraface_detector_tnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=58,59 "Built target ultraface_detector_tnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=74,75 "Built target ultraface_detector_tnn"
 .PHONY : examples/tnn/CMakeFiles/ultraface_detector_tnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1114,7 +1148,7 @@ examples/tnn/CMakeFiles/ultraface_detector_tnn.dir/clean:
 examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/all:
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/build.make examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/depend
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/build.make examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=66,67 "Built target yolov5_detector_tnn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=84,85 "Built target yolov5_detector_tnn"
 .PHONY : examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1132,6 +1166,249 @@ yolov5_detector_tnn: examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/rule
 examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/clean:
 	$(MAKE) $(MAKESILENT) -f examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/build.make examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/clean
 .PHONY : examples/tnn/CMakeFiles/yolov5_detector_tnn.dir/clean
+
+#=============================================================================
+# Target rules for target examples/tflite/CMakeFiles/age_googlenet_tflite.dir
+
+# All Build rule for target.
+examples/tflite/CMakeFiles/age_googlenet_tflite.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/tflite/CMakeFiles/age_googlenet_tflite.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/age_googlenet_tflite.dir/build.make examples/tflite/CMakeFiles/age_googlenet_tflite.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/age_googlenet_tflite.dir/build.make examples/tflite/CMakeFiles/age_googlenet_tflite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=5,6 "Built target age_googlenet_tflite"
+.PHONY : examples/tflite/CMakeFiles/age_googlenet_tflite.dir/all
+
+# Build rule for subdir invocation for target.
+examples/tflite/CMakeFiles/age_googlenet_tflite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/tflite/CMakeFiles/age_googlenet_tflite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : examples/tflite/CMakeFiles/age_googlenet_tflite.dir/rule
+
+# Convenience name for target.
+age_googlenet_tflite: examples/tflite/CMakeFiles/age_googlenet_tflite.dir/rule
+.PHONY : age_googlenet_tflite
+
+# clean rule for target.
+examples/tflite/CMakeFiles/age_googlenet_tflite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/age_googlenet_tflite.dir/build.make examples/tflite/CMakeFiles/age_googlenet_tflite.dir/clean
+.PHONY : examples/tflite/CMakeFiles/age_googlenet_tflite.dir/clean
+
+#=============================================================================
+# Target rules for target examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir
+
+# All Build rule for target.
+examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/build.make examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/build.make examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=14,15 "Built target emotion_ferplus_tflite"
+.PHONY : examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/all
+
+# Build rule for subdir invocation for target.
+examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/rule
+
+# Convenience name for target.
+emotion_ferplus_tflite: examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/rule
+.PHONY : emotion_ferplus_tflite
+
+# clean rule for target.
+examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/build.make examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/clean
+.PHONY : examples/tflite/CMakeFiles/emotion_ferplus_tflite.dir/clean
+
+#=============================================================================
+# Target rules for target examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir
+
+# All Build rule for target.
+examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/build.make examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/build.make examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=24,25 "Built target fsanet_headpose_tflite"
+.PHONY : examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/all
+
+# Build rule for subdir invocation for target.
+examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/rule
+
+# Convenience name for target.
+fsanet_headpose_tflite: examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/rule
+.PHONY : fsanet_headpose_tflite
+
+# clean rule for target.
+examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/build.make examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/clean
+.PHONY : examples/tflite/CMakeFiles/fsanet_headpose_tflite.dir/clean
+
+#=============================================================================
+# Target rules for target examples/tflite/CMakeFiles/gender_googlenet_tflite.dir
+
+# All Build rule for target.
+examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/build.make examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/build.make examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=34,35 "Built target gender_googlenet_tflite"
+.PHONY : examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/all
+
+# Build rule for subdir invocation for target.
+examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/rule
+
+# Convenience name for target.
+gender_googlenet_tflite: examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/rule
+.PHONY : gender_googlenet_tflite
+
+# clean rule for target.
+examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/build.make examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/clean
+.PHONY : examples/tflite/CMakeFiles/gender_googlenet_tflite.dir/clean
+
+#=============================================================================
+# Target rules for target examples/tflite/CMakeFiles/mnist_tflite.dir
+
+# All Build rule for target.
+examples/tflite/CMakeFiles/mnist_tflite.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/tflite/CMakeFiles/mnist_tflite.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/mnist_tflite.dir/build.make examples/tflite/CMakeFiles/mnist_tflite.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/mnist_tflite.dir/build.make examples/tflite/CMakeFiles/mnist_tflite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=42,43 "Built target mnist_tflite"
+.PHONY : examples/tflite/CMakeFiles/mnist_tflite.dir/all
+
+# Build rule for subdir invocation for target.
+examples/tflite/CMakeFiles/mnist_tflite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/tflite/CMakeFiles/mnist_tflite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : examples/tflite/CMakeFiles/mnist_tflite.dir/rule
+
+# Convenience name for target.
+mnist_tflite: examples/tflite/CMakeFiles/mnist_tflite.dir/rule
+.PHONY : mnist_tflite
+
+# clean rule for target.
+examples/tflite/CMakeFiles/mnist_tflite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/mnist_tflite.dir/build.make examples/tflite/CMakeFiles/mnist_tflite.dir/clean
+.PHONY : examples/tflite/CMakeFiles/mnist_tflite.dir/clean
+
+#=============================================================================
+# Target rules for target examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir
+
+# All Build rule for target.
+examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/build.make examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/build.make examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=52,53 "Built target pfld_landmarks_tflite"
+.PHONY : examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/all
+
+# Build rule for subdir invocation for target.
+examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/rule
+
+# Convenience name for target.
+pfld_landmarks_tflite: examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/rule
+.PHONY : pfld_landmarks_tflite
+
+# clean rule for target.
+examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/build.make examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/clean
+.PHONY : examples/tflite/CMakeFiles/pfld_landmarks_tflite.dir/clean
+
+#=============================================================================
+# Target rules for target examples/tflite/CMakeFiles/ssrnet_age_tflite.dir
+
+# All Build rule for target.
+examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/build.make examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/build.make examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=62,63 "Built target ssrnet_age_tflite"
+.PHONY : examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/all
+
+# Build rule for subdir invocation for target.
+examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/rule
+
+# Convenience name for target.
+ssrnet_age_tflite: examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/rule
+.PHONY : ssrnet_age_tflite
+
+# clean rule for target.
+examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/build.make examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/clean
+.PHONY : examples/tflite/CMakeFiles/ssrnet_age_tflite.dir/clean
+
+#=============================================================================
+# Target rules for target examples/tflite/CMakeFiles/ultraface_detector_tflite.dir
+
+# All Build rule for target.
+examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/build.make examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/build.make examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=72,73 "Built target ultraface_detector_tflite"
+.PHONY : examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/all
+
+# Build rule for subdir invocation for target.
+examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/rule
+
+# Convenience name for target.
+ultraface_detector_tflite: examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/rule
+.PHONY : ultraface_detector_tflite
+
+# clean rule for target.
+examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/build.make examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/clean
+.PHONY : examples/tflite/CMakeFiles/ultraface_detector_tflite.dir/clean
+
+#=============================================================================
+# Target rules for target examples/tflite/CMakeFiles/yolov5_detector_tflite.dir
+
+# All Build rule for target.
+examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/all: src/CMakeFiles/model_deploy_dataset_lib.dir/all
+examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/all: examples/CMakeFiles/clean_assets.dir/all
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/build.make examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/depend
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/build.make examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/app/build/CMakeFiles --progress-num=82,83 "Built target yolov5_detector_tflite"
+.PHONY : examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/all
+
+# Build rule for subdir invocation for target.
+examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /app/build/CMakeFiles 0
+.PHONY : examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/rule
+
+# Convenience name for target.
+yolov5_detector_tflite: examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/rule
+.PHONY : yolov5_detector_tflite
+
+# clean rule for target.
+examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/clean:
+	$(MAKE) $(MAKESILENT) -f examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/build.make examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/clean
+.PHONY : examples/tflite/CMakeFiles/yolov5_detector_tflite.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

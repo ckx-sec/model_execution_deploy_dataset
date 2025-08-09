@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "../../bin/mnist_onnxruntime"
   "../../bin/mnist_onnxruntime.pdb"
-  "CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.o"
-  "CMakeFiles/mnist_onnxruntime.dir/mnist.cpp.o.d"
+  "CMakeFiles/mnist_onnxruntime.dir/mnist_onnxruntime.cpp.o"
+  "CMakeFiles/mnist_onnxruntime.dir/mnist_onnxruntime.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.

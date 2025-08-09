@@ -15,7 +15,7 @@ PROJECT_ROOT=$(cd $(dirname $0); pwd)
 
 # --- Helper Functions ---
 print_usage() {
-    echo "Usage: $0 {build-docker|prepare|build-mnn|build-ncnn|build-onnxruntime|build-tnn|build-project|all|shell|clean}"
+    echo "Usage: $0 {build-docker|prepare|build-mnn|build-ncnn|build-onnxruntime|build-tnn|build-tflite|build-project|all|shell|clean}"
     echo ""
     echo "You can control the compiler and build type using environment variables:"
     echo "  CC: C compiler (e.g., gcc, clang)"
@@ -64,6 +64,11 @@ cmd_build_tnn() {
     run_in_docker "./scripts/build_tnn.sh"
 }
 
+cmd_build_tflite() {
+    echo "=> Building TensorFlow Lite..."
+    run_in_docker "./scripts/build_tflite.sh"
+}
+
 cmd_build_project() {
     echo "=> Building main project..."
     local build_cmd="
@@ -81,6 +86,7 @@ cmd_all() {
     cmd_build_ncnn
     cmd_build_onnxruntime
     cmd_build_tnn
+    cmd_build_tflite
     cmd_build_project
     echo "=> All tasks completed."
 }
@@ -111,6 +117,7 @@ case "$1" in
     build-ncnn) cmd_build_ncnn ;;
     build-onnxruntime) cmd_build_onnxruntime ;;
     build-tnn) cmd_build_tnn ;;
+    build-tflite) cmd_build_tflite ;;
     build-project) cmd_build_project ;;
     all) cmd_all ;;
     shell) cmd_shell ;;

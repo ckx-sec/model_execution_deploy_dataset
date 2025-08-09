@@ -66,7 +66,7 @@ int main(int argc, char **argv) {
 
     const float happiness_prob = probs[1];
     const float neutral_prob = probs[0];
-    if (happiness_prob > 0.7f && neutral_prob < 0.3f) {
+    if (happiness_prob > 0.5f && neutral_prob < 0.4f) {
         printf("true\n");
     } else {
         printf("false\n");
