@@ -94,18 +94,15 @@ int main(int argc, char **argv) {
     cv::cvtColor(resized_image, resized_image, cv::COLOR_BGR2RGB);
 
     std::vector<float> input_tensor_values(1 * 3 * input_height * input_width);
-    resized_image.convertTo(resized_image, CV_32F, 1.0 / 255.0);
-    
-    // Normalize (assuming mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-    float mean[] = {0.485f, 0.456f, 0.406f};
-    float scale[] = {1/0.229f, 1/0.224f, 1/0.225f};
-    
+    resized_image.convertTo(resized_image, CV_32F);
+
+    // Normalize to [-1, 1] to align with other engines
     // HWC to CHW and normalize
     for (int c = 0; c < 3; ++c) {
         for (int h = 0; h < input_height; ++h) {
             for (int w = 0; w < input_width; ++w) {
                 input_tensor_values[c * input_height * input_width + h * input_width + w] =
-                    (resized_image.at<cv::Vec3f>(h, w)[c] - mean[c]) * scale[c];
+                    (resized_image.at<cv::Vec3f>(h, w)[c] - 127.5f) / 128.0f;
             }
         }
     }
@@ -138,7 +135,12 @@ int main(int argc, char **argv) {
     int max_index = std::distance(probs.begin(), max_it);
     float confidence = *max_it;
 
-    const float prob_threshold = 0.4f;
+    printf("DEBUG ONNX: Age Bracket[%d], Confidence: %.4f\n", max_index, confidence);
+    for(size_t i = 0; i < probs.size(); ++i) {
+        printf("  - Prob[%zu]: %.4f\n", i, probs[i]);
+    }
+
+    const float prob_threshold = 0.7f;
     const int target_age_index = 4; // 25-32 years
     
     if (max_index == target_age_index && confidence > prob_threshold) {

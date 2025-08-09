@@ -64,6 +64,11 @@ int main(int argc, char **argv) {
 
     auto probs = softmax(raw_output, output_size);
 
+    printf("DEBUG NCNN: Emotion Probs:\n");
+    for(size_t i = 0; i < probs.size(); ++i) {
+        printf("  - Prob[%zu]: %.4f\n", i, probs[i]);
+    }
+
     const float happiness_prob = probs[1];
     const float neutral_prob = probs[0];
     if (happiness_prob > 0.5f && neutral_prob < 0.4f) {

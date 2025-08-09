@@ -86,6 +86,9 @@ int main(int argc, char **argv) {
     // --- Post-processing ---
     const float* raw_output = output_tensors[0].GetTensorData<float>();
     float predicted_age = raw_output[0];
+
+    printf("DEBUG: Predicted age: %f\n", predicted_age);
+
     if (predicted_age >= 18.0f && predicted_age <= 35.0f) {
         printf("true\n");
     } else {

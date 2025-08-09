@@ -74,6 +74,9 @@ int main(int argc, char **argv) {
     int predicted_gender_index = std::distance(probs.begin(), max_it);
     const int target_gender_index = 1; // "Female"
 
+    printf("DEBUG MNN: Predicted Gender Index: %d, Probs: [F: %.4f, M: %.4f]\n", 
+           predicted_gender_index, probs[1], probs[0]);
+
     if (predicted_gender_index == target_gender_index) {
         printf("true\n");
     } else {

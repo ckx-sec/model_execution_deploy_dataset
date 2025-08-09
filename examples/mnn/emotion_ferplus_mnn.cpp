@@ -72,6 +72,11 @@ int main(int argc, char **argv) {
 
     auto probs = softmax(raw_output, output_size);
 
+    printf("DEBUG MNN: Emotion Probs:\n");
+    for(size_t i = 0; i < probs.size(); ++i) {
+        printf("  - Prob[%zu]: %.4f\n", i, probs[i]);
+    }
+
     const int happiness_index = 1; // "happiness"
     const int neutral_index = 0;   // "neutral"
     const float happiness_prob = probs[happiness_index];

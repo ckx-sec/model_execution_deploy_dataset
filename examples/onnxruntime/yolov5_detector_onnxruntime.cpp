@@ -169,6 +169,12 @@ int main(int argc, char **argv) {
     
     std::vector<Box> detected_boxes;
     nms(bbox_collection, detected_boxes, iou_threshold);
+
+    if (detected_boxes.size() > 0) {
+        printf("DEBUG ONNX: Detected %zu objects. Top detection: Label %d, Score %.4f\n", 
+               detected_boxes.size(), detected_boxes[0].label, detected_boxes[0].score);
+    }
+
     if (detected_boxes.size() > 0 && detected_boxes[0].score > 0.5f) {
         printf("true\n");
     } else {

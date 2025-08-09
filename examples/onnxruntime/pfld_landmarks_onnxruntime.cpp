@@ -85,16 +85,17 @@ int main(int argc, char **argv) {
 
     cv::Mat resized_image;
     cv::resize(image, resized_image, cv::Size(input_width, input_height));
+    cv::cvtColor(resized_image, resized_image, cv::COLOR_BGR2RGB);
     
     std::vector<float> input_tensor_values(1 * 3 * input_height * input_width);
-    resized_image.convertTo(resized_image, CV_32F, 1.0 / 255.0);
+    resized_image.convertTo(resized_image, CV_32F);
     
-    // HWC to CHW
+    // HWC to CHW and normalize to [-1, 1]
     for (int c = 0; c < 3; ++c) {
         for (int h = 0; h < input_height; ++h) {
             for (int w = 0; w < input_width; ++w) {
                 input_tensor_values[c * input_height * input_width + h * input_width + w] =
-                    resized_image.at<cv::Vec3f>(h, w)[c];
+                    (resized_image.at<cv::Vec3f>(h, w)[c] - 127.5f) / 128.0f;
             }
         }
     }
@@ -120,6 +121,13 @@ int main(int argc, char **argv) {
     const float* raw_output = output_tensors[1].GetTensorData<float>();
     auto output_shape = output_tensors[1].GetTensorTypeAndShapeInfo().GetShape();
     size_t num_landmarks = output_shape[1]; // Should be 212 (106 * 2)
+
+    printf("DEBUG ONNX: All landmarks (x, y):\n");
+    for (size_t i = 0; i < num_landmarks; i += 2) {
+        if (i < 10 || i > num_landmarks - 12) { // Print first 5 and last 5 landmarks
+            printf("  - Landmark %zu: (%.4f, %.4f)\n", i / 2, raw_output[i], raw_output[i+1]);
+        }
+    }
 
     bool valid = true;
     for (size_t i = 0; i < num_landmarks; i += 2) {

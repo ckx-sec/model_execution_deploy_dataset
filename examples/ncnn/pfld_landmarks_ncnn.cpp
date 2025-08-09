@@ -36,6 +36,13 @@ int main(int argc, char **argv) {
     ncnn::Mat out;
     ex.extract("output", out);
     // 输出 landmarks
+    printf("DEBUG NCNN: All landmarks (x, y):\n");
+    for (int i = 0; i < 106; ++i) {
+        if (i < 5 || i > 100) { // Print first 5 and last 5
+            printf("  - Landmark %d: (%.4f, %.4f)\n", i, out[2*i], out[2*i+1]);
+        }
+    }
+
     bool valid = true;
     float margin_x = img.cols * 0.02f;
     float margin_y = img.rows * 0.02f;

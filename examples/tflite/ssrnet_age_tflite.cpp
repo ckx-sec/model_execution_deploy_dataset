@@ -58,6 +58,8 @@ int main(int argc, char **argv) {
     // --- Get output ---
     float* predicted_age = interpreter->typed_output_tensor<float>(0);
     
+    printf("DEBUG TFLITE: Predicted age: %.4f\n", predicted_age[0]);
+
     if (predicted_age[0] >= 18.0f && predicted_age[0] <= 35.0f) {
         printf("true\n");
     } else {

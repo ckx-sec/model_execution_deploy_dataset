@@ -35,6 +35,7 @@
 /app/build/examples/ncnn/CMakeFiles/pfld_landmarks_ncnn.dir
 /app/build/examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir
 /app/build/examples/ncnn/CMakeFiles/mnist_ncnn.dir
+/app/build/examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir
 /app/build/examples/ncnn/CMakeFiles/edit_cache.dir
 /app/build/examples/ncnn/CMakeFiles/rebuild_cache.dir
 /app/build/examples/tnn/CMakeFiles/emotion_ferplus_tnn.dir

@@ -120,6 +120,10 @@ int main(int argc, char **argv) {
     nms(bbox_collection, detected_boxes, iou_threshold);
 
     if (detected_boxes.size() > 0) {
+        printf("DEBUG TFLITE: Detected %zu faces. Top detection score: %.4f\n", detected_boxes.size(), detected_boxes[0].score);
+    }
+
+    if (detected_boxes.size() > 0 && detected_boxes[0].score > 0.5f) {
         printf("true\n");
     } else {
         printf("false\n");

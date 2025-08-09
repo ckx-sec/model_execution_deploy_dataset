@@ -98,6 +98,11 @@ int main(int argc, char **argv) {
     
     auto probs = softmax(raw_output, output_size);
     
+    printf("DEBUG ONNX: Emotion Probs:\n");
+    for(size_t i = 0; i < probs.size(); ++i) {
+        printf("  - Prob[%zu]: %.4f\n", i, probs[i]);
+    }
+
     // Find the class with the highest probability
     auto max_it = std::max_element(probs.begin(), probs.end());
     int max_index = std::distance(probs.begin(), max_it);

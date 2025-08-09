@@ -68,14 +68,24 @@ int main(int argc, char **argv) {
     auto session = net->createSession(config);
     // 输入尺寸
     const int target_size = 640;
-    int w = img.cols, h = img.rows;
+    // letterbox resize
+    int w = img.cols;
+    int h = img.rows;
     float scale = std::min(target_size / (w*1.f), target_size / (h*1.f));
     int new_w = w * scale;
     int new_h = h * scale;
+    
+    int dw = (target_size - new_w) / 2;
+    int dh = (target_size - new_h) / 2;
+
     cv::Mat resized;
     cv::resize(img, resized, cv::Size(new_w, new_h));
-    cv::Mat input_mat = cv::Mat::zeros(target_size, target_size, CV_8UC3);
-    resized.copyTo(input_mat(cv::Rect(0, 0, new_w, new_h)));
+    cv::Mat input_mat = cv::Mat(target_size, target_size, CV_8UC3, cv::Scalar(114, 114, 114));
+    resized.copyTo(input_mat(cv::Rect(dw, dh, new_w, new_h)));
+
+    // BGR to RGB
+    cv::cvtColor(input_mat, input_mat, cv::COLOR_BGR2RGB);
+
     // 填充 MNN 输入
     auto input_tensor = net->getSessionInput(session, nullptr);
     net->resizeTensor(input_tensor, {1, 3, target_size, target_size});
@@ -125,10 +135,10 @@ int main(int argc, char **argv) {
                 float ww = p[2];
                 float hh = p[3];
 
-                float x0 = (cx - ww * 0.5f) / scale;
-                float y0 = (cy - hh * 0.5f) / scale;
-                float x1 = (cx + ww * 0.5f) / scale;
-                float y1 = (cy + hh * 0.5f) / scale;
+                float x0 = (cx - ww * 0.5f - dw) / scale;
+                float y0 = (cy - hh * 0.5f - dh) / scale;
+                float x1 = (cx + ww * 0.5f - dw) / scale;
+                float y1 = (cy + hh * 0.5f - dh) / scale;
                 
                 Object obj;
                 obj.rect = cv::Rect_<float>(x0, y0, x1 - x0, y1 - y0);
@@ -146,9 +156,27 @@ int main(int argc, char **argv) {
     nms_sorted_bboxes(proposals, picked, nms_threshold);
     
     if (picked.size() > 0) {
+        printf("DEBUG MNN: Detected %zu objects. Top detection: Label %d, Score %.4f\n", 
+               picked.size(), proposals[picked[0]].label, proposals[picked[0]].prob);
+    }
+
+    if (picked.size() > 0 && proposals[picked[0]].prob > 0.5f) {
         printf("true\n");
     } else {
         printf("false\n");
+        // Debugging: Print proposals before NMS if nothing was picked
+        if (picked.empty()) {
+            if (proposals.size() > 0) {
+                printf("DEBUG MNN: No objects picked by NMS. Top 5 proposals before NMS:\n");
+                for (size_t i = 0; i < std::min((size_t)5, proposals.size()); ++i) {
+                    const auto& obj = proposals[i];
+                    printf("  - Label: %d, Prob: %.4f, Rect: [%.2f, %.2f, %.2f, %.2f]\n",
+                        obj.label, obj.prob, obj.rect.x, obj.rect.y, obj.rect.width, obj.rect.height);
+                }
+            } else {
+                printf("DEBUG MNN: No proposals generated at all.\n");
+            }
+        }
     }
     return 0;
 } 

@@ -94,16 +94,17 @@ int main(int argc, char **argv) {
     float score_threshold = 0.5f;
     float iou_threshold = 0.3f;
     std::vector<FaceBox> bbox_collection;
+    // The number of proposals is in scores.h (height of the tensor)
     for (int i = 0; i < scores.h; ++i) {
-        const float* scores_ptr = scores.row(i);
-        const float* boxes_ptr = boxes.row(i);
-        if (scores_ptr[1] > score_threshold) {
+        // scores tensor is [N, 2], boxes tensor is [N, 4]
+        // We only care about the confidence of the face class (index 1)
+        if (scores.row(i)[1] > score_threshold) {
             FaceBox box;
-            box.x1 = boxes_ptr[0] * img_w;
-            box.y1 = boxes_ptr[1] * img_h;
-            box.x2 = boxes_ptr[2] * img_w;
-            box.y2 = boxes_ptr[3] * img_h;
-            box.score = scores_ptr[1];
+            box.x1 = boxes.row(i)[0] * img_w;
+            box.y1 = boxes.row(i)[1] * img_h;
+            box.x2 = boxes.row(i)[2] * img_w;
+            box.y2 = boxes.row(i)[3] * img_h;
+            box.score = scores.row(i)[1];
             bbox_collection.push_back(box);
         }
     }
@@ -112,6 +113,10 @@ int main(int argc, char **argv) {
     nms(bbox_collection, detected_boxes, iou_threshold);
     
     if (detected_boxes.size() > 0) {
+        printf("DEBUG NCNN: Detected %zu faces. Top detection score: %.4f\n", detected_boxes.size(), detected_boxes[0].score);
+    }
+
+    if (detected_boxes.size() > 0 && detected_boxes[0].score > 0.5f) {
         printf("true\n");
     } else {
         printf("false\n");

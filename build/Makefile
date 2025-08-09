@@ -468,6 +468,19 @@ mnist_ncnn/fast:
 .PHONY : mnist_ncnn/fast
 
 #=============================================================================
+# Target rules for targets named age_googlenet_ncnn
+
+# Build rule for target.
+age_googlenet_ncnn: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 age_googlenet_ncnn
+.PHONY : age_googlenet_ncnn
+
+# fast build rule for target.
+age_googlenet_ncnn/fast:
+	$(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/build.make examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/build
+.PHONY : age_googlenet_ncnn/fast
+
+#=============================================================================
 # Target rules for targets named emotion_ferplus_tnn
 
 # Build rule for target.
@@ -685,6 +698,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... clean_assets"
 	@echo "... age_googlenet_mnn"
+	@echo "... age_googlenet_ncnn"
 	@echo "... age_googlenet_onnxruntime"
 	@echo "... age_googlenet_tflite"
 	@echo "... emotion_ferplus_mnn"

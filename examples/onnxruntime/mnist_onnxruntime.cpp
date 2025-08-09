@@ -82,6 +82,11 @@ int main(int argc, char **argv) {
     int64_t predicted_digit = std::distance(results.begin(), max_it);
     float confidence = *max_it;
 
+    printf("DEBUG ONNX: Predicted Digit: %ld, Confidence: %.4f\n", predicted_digit, confidence);
+    for(size_t i = 0; i < results.size(); ++i) {
+        printf("  - Prob[%zu]: %.4f\n", i, results[i]);
+    }
+
     const float prob_threshold = 0.7f;
     const int target_digit = 7;
 

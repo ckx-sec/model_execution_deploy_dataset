@@ -135,6 +135,11 @@ int main(int argc, char **argv) {
     nms_sorted_bboxes(proposals, picked, nms_threshold);
     
     if (picked.size() > 0) {
+        printf("DEBUG TFLITE: Detected %zu objects. Top detection: Label %d, Score %.4f\n", 
+               picked.size(), proposals[picked[0]].label, proposals[picked[0]].prob);
+    }
+
+    if (picked.size() > 0 && proposals[picked[0]].prob > 0.5f) {
         printf("true\n");
     } else {
         printf("false\n");

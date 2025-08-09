@@ -90,6 +90,11 @@ int main(int argc, char **argv) {
     int max_index = std::distance(probs.begin(), max_it);
     float confidence = *max_it;
 
+    printf("DEBUG MNN: Age Bracket[%d], Confidence: %.4f\n", max_index, confidence);
+    for(size_t i = 0; i < probs.size(); ++i) {
+        printf("  - Prob[%zu]: %.4f\n", i, probs[i]);
+    }
+
     const float prob_threshold = 0.7f; // Threshold significantly increased from 0.5
     const int target_age_index = 4; // 25-32 years
 

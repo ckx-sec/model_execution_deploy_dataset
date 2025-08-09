@@ -86,7 +86,7 @@ int main(int argc, char **argv) {
 
     cv::Mat resized;
     cv::resize(img, resized, cv::Size(new_w, new_h));
-    cv::Mat input = cv::Mat::zeros(target_size, target_size, CV_8UC3);
+    cv::Mat input = cv::Mat(target_size, target_size, CV_8UC3, cv::Scalar(114, 114, 114));
     resized.copyTo(input(cv::Rect(dw, dh, new_w, new_h)));
 
     // 转 ncnn::Mat
@@ -160,10 +160,29 @@ int main(int argc, char **argv) {
     std::sort(proposals.begin(), proposals.end(), [](const Object& a, const Object& b) { return a.prob > b.prob; });
     std::vector<int> picked;
     nms_sorted_bboxes(proposals, picked, nms_threshold);
+    
     if (picked.size() > 0) {
+        printf("DEBUG NCNN: Detected %zu objects. Top detection: Label %d, Score %.4f\n", 
+               picked.size(), proposals[picked[0]].label, proposals[picked[0]].prob);
+    }
+
+    if (picked.size() > 0 && proposals[picked[0]].prob > 0.5f) {
         printf("true\n");
     } else {
         printf("false\n");
+        // Debugging: Print proposals before NMS if nothing was picked
+        if (picked.empty()) {
+            if (proposals.size() > 0) {
+                printf("DEBUG NCNN: No objects picked by NMS. Top 5 proposals before NMS:\n");
+                for (size_t i = 0; i < std::min((size_t)5, proposals.size()); ++i) {
+                    const auto& obj = proposals[i];
+                    printf("  - Label: %d, Prob: %.4f, Rect: [%.2f, %.2f, %.2f, %.2f]\n",
+                        obj.label, obj.prob, obj.rect.x, obj.rect.y, obj.rect.width, obj.rect.height);
+                }
+            } else {
+                printf("DEBUG NCNN: No proposals generated at all.\n");
+            }
+        }
     }
     return 0;
 } 

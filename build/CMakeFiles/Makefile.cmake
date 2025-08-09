@@ -179,6 +179,7 @@ set(CMAKE_DEPEND_INFO_FILES
   "examples/ncnn/CMakeFiles/pfld_landmarks_ncnn.dir/DependInfo.cmake"
   "examples/ncnn/CMakeFiles/ssrnet_age_ncnn.dir/DependInfo.cmake"
   "examples/ncnn/CMakeFiles/mnist_ncnn.dir/DependInfo.cmake"
+  "examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/DependInfo.cmake"
   "examples/tnn/CMakeFiles/emotion_ferplus_tnn.dir/DependInfo.cmake"
   "examples/tnn/CMakeFiles/fsanet_headpose_tnn.dir/DependInfo.cmake"
   "examples/tnn/CMakeFiles/gender_googlenet_tnn.dir/DependInfo.cmake"

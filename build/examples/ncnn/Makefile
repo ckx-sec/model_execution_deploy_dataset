@@ -228,6 +228,44 @@ mnist_ncnn/fast:
 	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/mnist_ncnn.dir/build.make examples/ncnn/CMakeFiles/mnist_ncnn.dir/build
 .PHONY : mnist_ncnn/fast
 
+# Convenience name for target.
+examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/rule:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/rule
+.PHONY : examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/rule
+
+# Convenience name for target.
+age_googlenet_ncnn: examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/rule
+.PHONY : age_googlenet_ncnn
+
+# fast build rule for target.
+age_googlenet_ncnn/fast:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/build.make examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/build
+.PHONY : age_googlenet_ncnn/fast
+
+age_googlenet_ncnn.o: age_googlenet_ncnn.cpp.o
+.PHONY : age_googlenet_ncnn.o
+
+# target to build an object file
+age_googlenet_ncnn.cpp.o:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/build.make examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/age_googlenet_ncnn.cpp.o
+.PHONY : age_googlenet_ncnn.cpp.o
+
+age_googlenet_ncnn.i: age_googlenet_ncnn.cpp.i
+.PHONY : age_googlenet_ncnn.i
+
+# target to preprocess a source file
+age_googlenet_ncnn.cpp.i:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/build.make examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/age_googlenet_ncnn.cpp.i
+.PHONY : age_googlenet_ncnn.cpp.i
+
+age_googlenet_ncnn.s: age_googlenet_ncnn.cpp.s
+.PHONY : age_googlenet_ncnn.s
+
+# target to generate assembly for a file
+age_googlenet_ncnn.cpp.s:
+	cd /app/build && $(MAKE) $(MAKESILENT) -f examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/build.make examples/ncnn/CMakeFiles/age_googlenet_ncnn.dir/age_googlenet_ncnn.cpp.s
+.PHONY : age_googlenet_ncnn.cpp.s
+
 emotion_ferplus_ncnn.o: emotion_ferplus_ncnn.cpp.o
 .PHONY : emotion_ferplus_ncnn.o
 
@@ -428,6 +466,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... age_googlenet_ncnn"
 	@echo "... emotion_ferplus_ncnn"
 	@echo "... fsanet_headpose_ncnn"
 	@echo "... gender_googlenet_ncnn"
@@ -436,6 +475,9 @@ help:
 	@echo "... ssrnet_age_ncnn"
 	@echo "... ultraface_detector_ncnn"
 	@echo "... yolov5_detector_ncnn"
+	@echo "... age_googlenet_ncnn.o"
+	@echo "... age_googlenet_ncnn.i"
+	@echo "... age_googlenet_ncnn.s"
 	@echo "... emotion_ferplus_ncnn.o"
 	@echo "... emotion_ferplus_ncnn.i"
 	@echo "... emotion_ferplus_ncnn.s"

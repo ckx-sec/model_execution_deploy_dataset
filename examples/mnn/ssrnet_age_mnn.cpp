@@ -48,6 +48,9 @@ int main(int argc, char **argv) {
     output_tensor->copyToHostTensor(&output_host);
     const float* outptr = output_host.host<float>();
     float predicted_age = outptr[0];
+
+    printf("DEBUG MNN: Predicted age: %f\n", predicted_age);
+
     // Stricter condition: age must be between 20 and 30
     if (predicted_age >= 18.0f && predicted_age <= 35.0f) {
         printf("true\n");

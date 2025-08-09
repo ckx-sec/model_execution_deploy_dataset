@@ -45,8 +45,15 @@ int main(int argc, char **argv) {
     auto output_tensor = net->getSessionOutput(session, nullptr);
     MNN::Tensor output_host(output_tensor, output_tensor->getDimensionType());
     output_tensor->copyToHostTensor(&output_host);
-    int num = 106;
     const float* outptr = output_host.host<float>();
+
+    printf("DEBUG MNN: All landmarks (x, y):\n");
+    for (int i = 0; i < 106; ++i) {
+        if (i < 5 || i > 100) { // Print first 5 and last 5
+             printf("  - Landmark %d: (%.4f, %.4f)\n", i, outptr[2*i], outptr[2*i+1]);
+        }
+    }
+
     // Stricter condition: ALL landmarks must be within a narrower margin of the image
     bool valid = true;
     float margin_x = img.cols * 0.02f;

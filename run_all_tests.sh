@@ -121,37 +121,21 @@ for exe_path in "$BIN_DIR"/*; do
 
     # Handle the special case for fsanet_headpose
     if [ "$model_base" = "fsanet_headpose" ]; then
-        # The ncnn executable for fsanet only takes one model, so we call it twice.
-        # Other engines (MNN, ONNX, TFLite) take two models and average the results.
+        # The ncnn executable for fsanet now takes two models, similar to other engines.
+        # It requires var.param, var.bin, 1x1.param, and 1x1.bin.
         if [ "$engine" = "ncnn" ]; then
             var_param_path="$ASSETS_DIR/fsanet-var.param"
             var_bin_path="$ASSETS_DIR/fsanet-var.bin"
             conv_param_path="$ASSETS_DIR/fsanet-1x1.param"
             conv_bin_path="$ASSETS_DIR/fsanet-1x1.bin"
-            image_path="$ASSETS_DIR/$image_asset_name"
 
-            if [ ! -f "$image_path" ]; then
-                 failures+=("ERROR: $exe_name (Image file '$image_asset_name' not found)")
-                 continue
+            # Check if all model files exist
+            if [ ! -f "$var_param_path" ] || [ ! -f "$var_bin_path" ] || \
+               [ ! -f "$conv_param_path" ] || [ ! -f "$conv_bin_path" ]; then
+                failures+=("ERROR: $exe_name (One or more NCNN models for 'fsanet_headpose' not found)")
+                continue
             fi
-
-            # Call with fsanet-var
-            echo "INFO: Calling with fsanet-var model..."
-            if [ -f "$var_param_path" ] && [ -f "$var_bin_path" ]; then
-                "$exe_path" "$var_param_path" "$var_bin_path" "$image_path"
-            else
-                failures+=("ERROR: $exe_name (NCNN model 'fsanet-var' not found)")
-            fi
-
-            # Call with fsanet-1x1
-            echo "INFO: Calling with fsanet-1x1 model..."
-            if [ -f "$conv_param_path" ] && [ -f "$conv_bin_path" ]; then
-                "$exe_path" "$conv_param_path" "$conv_bin_path" "$image_path"
-            else
-                failures+=("ERROR: $exe_name (NCNN model 'fsanet-1x1' not found)")
-            fi
-            # Skip the generic execution logic at the end of the loop
-            continue
+            args=("$var_param_path" "$var_bin_path" "$conv_param_path" "$conv_bin_path")
         else
             var_model_path=""
             conv_model_path=""

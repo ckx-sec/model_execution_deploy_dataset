@@ -26,6 +26,31 @@ int main(int argc, char **argv) {
     tflite::InterpreterBuilder(*model, resolver)(&interpreter);
     interpreter->AllocateTensors();
 
+    // --- Print model input/output details ---
+    std::cout << "--- TFLite Model ---" << std::endl;
+    std::cout << "Input tensors: " << interpreter->inputs().size() << std::endl;
+    for (size_t i = 0; i < interpreter->inputs().size(); ++i) {
+        auto* tensor = interpreter->input_tensor(i);
+        std::cout << "Input " << i << ": name=" << tensor->name;
+        std::cout << ", dims=[";
+        for (int d = 0; d < tensor->dims->size; ++d) {
+            std::cout << tensor->dims->data[d] << (d < tensor->dims->size - 1 ? ", " : "");
+        }
+        std::cout << "]" << std::endl;
+    }
+
+    std::cout << "Output tensors: " << interpreter->outputs().size() << std::endl;
+    for (size_t i = 0; i < interpreter->outputs().size(); ++i) {
+        auto* tensor = interpreter->output_tensor(i);
+        std::cout << "Output " << i << ": name=" << tensor->name;
+        std::cout << ", dims=[";
+        for (int d = 0; d < tensor->dims->size; ++d) {
+            std::cout << tensor->dims->data[d] << (d < tensor->dims->size - 1 ? ", " : "");
+        }
+        std::cout << "]" << std::endl;
+    }
+    std::cout << "--------------------" << std::endl;
+
     // --- Preprocessing ---
     cv::Mat img = cv::imread(image_path);
     if (img.empty()) {
@@ -50,18 +75,32 @@ int main(int argc, char **argv) {
     // --- Inference ---
     interpreter->Invoke();
 
-    // --- Get output ---
-    // PFLD has 2 outputs, the first one is landmarks
-    float* raw_output = interpreter->typed_output_tensor<float>(0);
-    const auto* output_dims = interpreter->output_tensor(0)->dims;
-    size_t num_landmarks = output_dims->data[1] * output_dims->data[2]; // Should be 212 (106 * 2)
+    // --- Post-processing ---
+    float* raw_output = interpreter->typed_output_tensor<float>(1);
+    const auto* output_dims = interpreter->output_tensor(1)->dims;
+    // The landmark tensor shape is [1, 212], so we take the second dimension.
+    size_t num_landmarks = output_dims->data[1]; // Total number of float values (106 landmarks * 2 coords)
+
+    printf("DEBUG TFLITE: All landmarks (x, y):\n");
+    for (size_t i = 0; i < num_landmarks; i += 2) {
+        if (i < 10 || i > num_landmarks - 12) { // Print first 5 and last 5 landmarks
+             printf("  - Landmark %zu: (%.4f, %.4f)\n", i/2, raw_output[i], raw_output[i+1]);
+        }
+    }
 
     bool valid = true;
+    // Align with MNN version: scale coordinates to pixels before checking boundaries
+    float margin_x = img.cols * 0.02f;
+    float margin_y = img.rows * 0.02f;
+
     for (size_t i = 0; i < num_landmarks; i += 2) {
-        float x = raw_output[i];
-        float y = raw_output[i+1];
-        // Loosen the condition to align with ncnn version
-        if (x < -0.1f || x > 1.1f || y < -0.1f || y > 1.1f) {
+        // First, scale the normalized coordinates to pixel coordinates
+        float x = raw_output[i] * img.cols;
+        float y = raw_output[i+1] * img.rows;
+
+        // Then, check boundaries on the pixel coordinates
+        if (x < margin_x || x >= img.cols - margin_x || y < margin_y || y >= img.rows - margin_y) {
+            printf("DEBUG: Landmark %zu failed: pixel coords (x=%.4f, y=%.4f)\n", i / 2, x, y);
             valid = false;
             break;
         }

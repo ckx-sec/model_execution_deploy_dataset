@@ -97,6 +97,10 @@ int main(int argc, char **argv) {
     float final_pitch = (var_pitch + conv_pitch) / 2.0f;
     float final_roll = (var_roll + conv_roll) / 2.0f;
 
+    printf("DEBUG MNN: var_yaw: %.4f, var_pitch: %.4f, var_roll: %.4f\n", var_yaw, var_pitch, var_roll);
+    printf("DEBUG MNN: conv_yaw: %.4f, conv_pitch: %.4f, conv_roll: %.4f\n", conv_yaw, conv_pitch, conv_roll);
+    printf("DEBUG MNN: final_yaw: %.4f, final_pitch: %.4f, final_roll: %.4f\n", final_yaw, final_pitch, final_roll);
+
     const float angle_threshold = 10.0f;
 
     if (fabs(final_yaw) < angle_threshold && fabs(final_pitch) < angle_threshold && fabs(final_roll) < angle_threshold) {
