@@ -141,8 +141,8 @@ for exe_path in "$BIN_DIR"/*; do
             conv_model_path=""
             case $engine in
                 "tflite")
-                    var_model_path="$ASSETS_DIR/fsanet-var_float32.tflite"
-                    conv_model_path="$ASSETS_DIR/fsanet-1x1_float32.tflite"
+                    var_model_path="$ASSETS_DIR/fsanet-var_float16.tflite"
+                    conv_model_path="$ASSETS_DIR/fsanet-1x1_float16.tflite"
                     ;;
                 "onnxruntime")
                     var_model_path="$ASSETS_DIR/fsanet-var.onnx"

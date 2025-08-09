@@ -1,6 +1,6 @@
 # 模型部署执行环境 (Model Deploy Execution Environment)
 
-本项目提供了一个 C++ 开发和执行环境，用于试验多种深度学习推理引擎，包括 MNN、NCNN、ONNXRuntime 和 TNN。整个项目被设置为在 Docker 容器内构建，以确保一个一致且可复现的环境。
+本项目提供了一个 C++ 开发和执行环境，用于试验多种深度学习推理引擎，包括 **MNN, NCNN, ONNXRuntime, TNN, 和 TensorFlow Lite (TFLite)**。整个项目被设置为在 Docker 容器内构建，以确保一个一致且可复现的环境。
 
 ## 先决条件
 
@@ -18,6 +18,72 @@
 -   `third_party/`: 将包含最终编译好的依赖库和头文件。
 -   `third_party_builds/`: 将包含下载的第三方库的源代码。
 -   `assets/`: 用于存放模型文件和其他资源。
+
+## 功能架构
+
+本项目的核心是一个**用于 C++ 环境下多推理引擎部署、测试和比较的综合性工具集与资源库**。其架构并非一个统一的软件库，而是一个精心设计的“沙盒环境”，允许开发者直接使用不同引擎的原生API进行实验。
+
+```mermaid
+graph TD
+    subgraph "宿主机 (Developer's Machine)"
+        A[开发者] -- 执行 --> B(./build.sh)
+    end
+
+    B -- 控制 --> C{Docker 容器}
+
+    subgraph "Docker 容器 (Ubuntu ARM64)"
+        C -- 内部执行 --> D{构建系统}
+        D -- 编译 --> E{示例程序}
+        E -- 加载 --> F{模型资源}
+        E -- 使用 --> G{推理引擎原生库}
+
+        subgraph D [构建系统]
+            direction LR
+            D1(CMakeLists.txt) -- 配置 --> D2(CMake)
+            D2 -- 生成 --> D3(Makefiles)
+            D3 -- 构建 --> E
+        end
+
+        subgraph G [推理引擎原生库]
+            direction LR
+            G1[MNN]
+            G2[NCNN]
+            G3[ONNXRuntime]
+            G4[TFLite]
+            G5[TNN]
+        end
+        
+        subgraph E [示例程序 (examples/)]
+            direction TB
+            E1[mnist_ncnn.cpp] --> G2
+            E2[mnist_onnxruntime.cpp] --> G3
+            E3[...]
+        end
+
+        subgraph F [模型与数据 (assets/)]
+            direction TB
+            F1[*.onnx]
+            F2[*.mnn]
+            F3[*.param, *.bin]
+            F4[test_*.jpg]
+        end
+    end
+
+    style C fill:#f9f,stroke:#333,stroke-width:2px
+```
+
+## 支持的模型与任务
+
+本项目通过示例程序和资源文件，提供了对以下计算机视觉任务的支持：
+
+| 任务类型 | 模型 | 支持格式 |
+| :--- | :--- | :--- |
+| 目标检测 | `yolov5_detector`, `ultraface_detector` | ONNX, NCNN, MNN, TFLite |
+| 年龄估计 | `age_googlenet`, `ssrnet_age` | ONNX, NCNN, MNN, TFLite |
+| 性别识别 | `gender_googlenet` | ONNX, NCNN, MNN, TFLite |
+| 情绪识别 | `emotion_ferplus` | ONNX, NCNN, MNN, TFLite |
+| 头部姿态估计 | `fsanet-1x1`, `fsanet-var` | ONNX, NCNN, MNN, TFLite |
+| 人脸关键点检测 | `pfld_landmarks` | ONNX, NCNN, MNN, TFLite |
 
 ## 如何构建
 
@@ -44,13 +110,14 @@ CC=clang CXX=clang++ CMAKE_BUILD_TYPE=Debug ./build.sh build-mnn
 ### 可用命令
 
 -   `./build.sh build-docker`: 构建开发环境所需的 Docker 镜像。
--   `./build.sh prepare`: 克隆 MNN、NCNN、ONNXRuntime 和 TNN 的源代码到 `third_party_builds/` 目录。
+-   `./build.sh prepare`: 克隆 MNN、NCNN、ONNXRuntime、TNN 和 TFLite 的源代码到 `third_party_builds/` 目录。
 -   `./build.sh build-mnn`: 编译 MNN 库。
 -   `./build.sh build-ncnn`: 编译 NCNN 库。
 -   `./build.sh build-onnxruntime`: 编译 ONNXRuntime 库。
 -   `./build.sh build-tnn`: 编译 TNN 库。
+-   `./build.sh build-tflite`: 编译 TensorFlow Lite 库。
 -   `./build.sh build-project`: 编译主项目库和示例。
--   `./build.sh all`: 按顺序运行所有必要步骤：`build-docker`, `prepare`, `build-mnn`, `build-ncnn`, `build-onnxruntime`, `build-tnn`, 以及 `build-project`。
+-   `./build.sh all`: 按顺序运行所有必要步骤。
 -   `./build.sh shell`: 进入构建容器内的交互式 `bash` shell，用于调试。
 -   `./build.sh clean`: 删除项目的 `build/` 目录和已安装的 `third_party/` 库。
 
@@ -74,17 +141,8 @@ CC=clang CXX=clang++ CMAKE_BUILD_TYPE=Debug ./build.sh build-mnn
     ./build.sh build-ncnn
     ./build.sh build-onnxruntime
     ./build.sh build-tnn
+    ./build.sh build-tflite
     ```
 
 4.  **构建项目**
-    ```bash
-    ./build.sh build-project
     ```
-
-### 一键构建
-
-或者，您可以使用一个命令执行以上所有步骤：
-
-```bash
-./build.sh all
-``` 
