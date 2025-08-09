@@ -62,10 +62,10 @@ void run_fsanet_model(
     output_tensor->copyToHostTensor(&output_host);
     const float* outptr = output_host.host<float>();
 
-    // Scale the normalized output
-    yaw = outptr[0] * 90.f;
-    pitch = outptr[1] * 90.f;
-    roll = outptr[2] * 90.f;
+    // The ONNX model seems to have scaling built-in. Assume MNN model is the same.
+    yaw = outptr[0];
+    pitch = outptr[1];
+    roll = outptr[2];
 }
 
 int main(int argc, char **argv) {

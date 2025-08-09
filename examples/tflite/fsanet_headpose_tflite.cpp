@@ -47,10 +47,10 @@ void run_fsanet_model(
 
     // --- Post-processing ---
     float* raw_output = interpreter->typed_output_tensor<float>(0);
-    // TFLite output is not scaled, so we scale it by 90.0f
-    yaw = raw_output[0] * 90.0f;
-    pitch = raw_output[1] * 90.0f;
-    roll = raw_output[2] * 90.0f;
+    // ONNX model has scaling built-in, assuming TFLite is the same.
+    yaw = raw_output[0];
+    pitch = raw_output[1];
+    roll = raw_output[2];
 }
 
 int main(int argc, char **argv) {

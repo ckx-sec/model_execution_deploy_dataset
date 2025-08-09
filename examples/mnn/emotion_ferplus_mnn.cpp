@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
     MNN::CV::ImageProcess::Config p_config;
     p_config.sourceFormat = MNN::CV::GRAY;
     p_config.destFormat = MNN::CV::GRAY;
-
+    // No normalization needed for grayscale as per onnx version
     std::shared_ptr<MNN::CV::ImageProcess> pretreat(
         MNN::CV::ImageProcess::create(p_config)
     );

@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
     const int input_size = 64;
     cv::Mat resized;
     cv::resize(img, resized, cv::Size(input_size, input_size));
-    ncnn::Mat in = ncnn::Mat::from_pixels(resized.data, ncnn::Mat::PIXEL_BGR, input_size, input_size);
+    ncnn::Mat in = ncnn::Mat::from_pixels(resized.data, ncnn::Mat::PIXEL_BGR2RGB, input_size, input_size);
     // Align with ONNX version's normalization (ImageNet mean/std)
     const float mean_vals[3] = {0.485f * 255.0f, 0.456f * 255.0f, 0.406f * 255.0f};
     const float norm_vals[3] = {1.0f / (0.229f * 255.0f), 1.0f / (0.224f * 255.0f), 1.0f / (0.225f * 255.0f)};

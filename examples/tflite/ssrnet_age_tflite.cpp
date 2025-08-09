@@ -34,13 +34,23 @@ int main(int argc, char **argv) {
     }
     cv::Mat resized;
     cv::resize(img, resized, cv::Size(input_size, input_size));
+    cv::cvtColor(resized, resized, cv::COLOR_BGR2RGB);
 
     // --- Fill input tensor ---
     float* input_ptr = interpreter->typed_input_tensor<float>(0);
-    // TFLite models usually expect float input in [0,1] or [-1,1] range.
-    // Assuming normalization to [0,1] as a common case.
-    resized.convertTo(resized, CV_32F, 1.0 / 255.0);
-    memcpy(input_ptr, resized.data, input_size * input_size * 3 * sizeof(float));
+    resized.convertTo(resized, CV_32F);
+    
+    // Normalize with ImageNet mean and std
+    float mean[] = {0.485f, 0.456f, 0.406f};
+    float scale[] = {1/0.229f, 1/0.224f, 1/0.225f};
+
+    for (int h = 0; h < input_size; ++h) {
+        for (int w = 0; w < input_size; ++w) {
+            for (int c = 0; c < 3; ++c) {
+                input_ptr[(h * input_size + w) * 3 + c] = (resized.at<cv::Vec3f>(h, w)[c] / 255.0f - mean[c]) * scale[c];
+            }
+        }
+    }
 
     // --- Inference ---
     interpreter->Invoke();

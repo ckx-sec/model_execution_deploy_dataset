@@ -60,7 +60,8 @@ int main(int argc, char **argv) {
     for (size_t i = 0; i < num_landmarks; i += 2) {
         float x = raw_output[i];
         float y = raw_output[i+1];
-        if (x < 0.02f || x > 0.98f || y < 0.02f || y > 0.98f) {
+        // Loosen the condition to align with ncnn version
+        if (x < -0.1f || x > 1.1f || y < -0.1f || y > 1.1f) {
             valid = false;
             break;
         }

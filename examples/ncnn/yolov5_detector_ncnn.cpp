@@ -12,7 +12,7 @@ struct Object {
 };
 
 // NMS implementation
-static void nms_sorted_bboxes(const std::vector<Object>& objects, std::vector<int>& picked, float nms_threshold)
+static void nms_sorted_bboxes(std::vector<Object>& objects, std::vector<int>& picked, float nms_threshold, bool agnostic = false)
 {
     picked.clear();
     const size_t n = objects.size();
@@ -20,17 +20,30 @@ static void nms_sorted_bboxes(const std::vector<Object>& objects, std::vector<in
     for (size_t i = 0; i < n; i++) {
         areas[i] = objects[i].rect.area();
     }
+
     for (size_t i = 0; i < n; i++) {
         const Object& a = objects[i];
         int keep = 1;
-        for (int j : picked) {
-            const Object& b = objects[j];
-            float inter_area = (a.rect & b.rect).area();
-            float union_area = areas[i] + areas[j] - inter_area;
-            if (inter_area / union_area > nms_threshold)
+        for (size_t j = 0; j < picked.size(); j++) {
+            const Object& b = objects[picked[j]];
+            if (!agnostic && a.label != b.label) {
+                continue;
+            }
+            // intersection over union
+            cv::Rect_<float> inter = a.rect & b.rect;
+            float inter_area = inter.area();
+            float union_area = areas[i] + areas[picked[j]] - inter_area;
+            float iou = inter_area / union_area;
+            if (iou > nms_threshold)
+            {
                 keep = 0;
+                break;
+            }
         }
-        if (keep) picked.push_back(i);
+
+        if (keep) {
+            picked.push_back(i);
+        }
     }
 }
 
@@ -67,10 +80,14 @@ int main(int argc, char **argv) {
     float scale = std::min(target_size / (w*1.f), target_size / (h*1.f));
     int new_w = w * scale;
     int new_h = h * scale;
+    
+    int dw = (target_size - new_w) / 2;
+    int dh = (target_size - new_h) / 2;
+
     cv::Mat resized;
     cv::resize(img, resized, cv::Size(new_w, new_h));
     cv::Mat input = cv::Mat::zeros(target_size, target_size, CV_8UC3);
-    resized.copyTo(input(cv::Rect(0, 0, new_w, new_h)));
+    resized.copyTo(input(cv::Rect(dw, dh, new_w, new_h)));
 
     // 转 ncnn::Mat
     ncnn::Mat in = ncnn::Mat::from_pixels(input.data, ncnn::Mat::PIXEL_BGR2RGB, target_size, target_size);
@@ -85,6 +102,7 @@ int main(int argc, char **argv) {
     // 后处理
     std::vector<Object> proposals;
     const float conf_threshold = 0.25f;
+    const float nms_threshold = 0.45f;
     const int num_grid = out.h;
     const int num_class = out.w - 5;
 
@@ -114,15 +132,15 @@ int main(int argc, char **argv) {
                 float box_w = values[2];
                 float box_h = values[3];
                 // 坐标还原
-                float x0 = (cx - box_w * 0.5f) * target_size;
-                float y0 = (cy - box_h * 0.5f) * target_size;
-                float x1 = (cx + box_w * 0.5f) * target_size;
-                float y1 = (cy + box_h * 0.5f) * target_size;
+                float x0 = (cx - box_w * 0.5f);
+                float y0 = (cy - box_h * 0.5f);
+                float x1 = (cx + box_w * 0.5f);
+                float y1 = (cy + box_h * 0.5f);
                 // 反 letterbox
-                x0 = (x0 - 0) / scale;
-                y0 = (y0 - 0) / scale;
-                x1 = (x1 - 0) / scale;
-                y1 = (y1 - 0) / scale;
+                x0 = (x0 - dw) / scale;
+                y0 = (y0 - dh) / scale;
+                x1 = (x1 - dw) / scale;
+                y1 = (y1 - dh) / scale;
 
                 x0 = std::max(std::min(x0, (float)(w - 1)), 0.f);
                 y0 = std::max(std::min(y0, (float)(h - 1)), 0.f);
@@ -141,8 +159,8 @@ int main(int argc, char **argv) {
     // NMS
     std::sort(proposals.begin(), proposals.end(), [](const Object& a, const Object& b) { return a.prob > b.prob; });
     std::vector<int> picked;
-    nms_sorted_bboxes(proposals, picked, 0.45f);
-    if (picked.size() == 1 && proposals[picked[0]].prob > 0.5f) {
+    nms_sorted_bboxes(proposals, picked, nms_threshold);
+    if (picked.size() > 0) {
         printf("true\n");
     } else {
         printf("false\n");

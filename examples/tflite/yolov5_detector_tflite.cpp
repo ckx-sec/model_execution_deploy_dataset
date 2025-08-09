@@ -33,24 +33,37 @@ void letterbox(const cv::Mat& image, cv::Mat& out_image, ScaleParams& params, in
     resized.copyTo(out_image(cv::Rect(params.dw, params.dh, new_unpad_w, new_unpad_h)));
 }
 
-static void nms_sorted_bboxes(const std::vector<Object>& objects, std::vector<int>& picked, float nms_threshold) {
+static void nms_sorted_bboxes(std::vector<Object>& objects, std::vector<int>& picked, float nms_threshold, bool agnostic = false) {
     picked.clear();
     const size_t n = objects.size();
     std::vector<float> areas(n);
     for (size_t i = 0; i < n; i++) {
         areas[i] = objects[i].rect.area();
     }
+
     for (size_t i = 0; i < n; i++) {
         const Object& a = objects[i];
         int keep = 1;
-        for (int j : picked) {
-            const Object& b = objects[j];
-            float inter_area = (a.rect & b.rect).area();
-            float union_area = areas[i] + areas[j] - inter_area;
-            if (inter_area / union_area > nms_threshold)
+        for (size_t j = 0; j < picked.size(); j++) {
+            const Object& b = objects[picked[j]];
+            if (!agnostic && a.label != b.label) {
+                continue;
+            }
+            // intersection over union
+            cv::Rect_<float> inter = a.rect & b.rect;
+            float inter_area = inter.area();
+            float union_area = areas[i] + areas[picked[j]] - inter_area;
+            float iou = inter_area / union_area;
+            if (iou > nms_threshold)
+            {
                 keep = 0;
+                break;
+            }
         }
-        if (keep) picked.push_back(i);
+
+        if (keep) {
+            picked.push_back(i);
+        }
     }
 }
 
@@ -85,25 +98,30 @@ int main(int argc, char **argv) {
     const auto* output_dims = interpreter->output_tensor(0)->dims;
     const int num_proposals = output_dims->data[1];
     const int proposal_length = output_dims->data[2];
+    const float conf_threshold = 0.25f;
+    const float nms_threshold = 0.45f;
 
     std::vector<Object> proposals;
     for (int i = 0; i < num_proposals; ++i) {
         const float* proposal = raw_output + i * proposal_length;
         float conf = proposal[4];
-        if (conf < 0.25f) continue;
+        if (conf < conf_threshold) continue;
+
         const float* class_scores = proposal + 5;
         int class_id = std::distance(class_scores, std::max_element(class_scores, class_scores + num_classes));
         float class_score = class_scores[class_id];
-        if (class_score * conf < 0.25f) continue;
+
+        if (class_score * conf < conf_threshold) continue;
         
         float cx = proposal[0];
         float cy = proposal[1];
-        float w = proposal[2];
-        float h = proposal[3];
-        float x1 = (cx - 0.5f * w - scale_params.dw) / scale_params.r;
-        float y1 = (cy - 0.5f * h - scale_params.dh) / scale_params.r;
-        float x2 = (cx + 0.5f * w - scale_params.dw) / scale_params.r;
-        float y2 = (cy + 0.5f * h - scale_params.dh) / scale_params.r;
+        float w_box = proposal[2];
+        float h_box = proposal[3];
+
+        float x1 = (cx - 0.5f * w_box - scale_params.dw) / scale_params.r;
+        float y1 = (cy - 0.5f * h_box - scale_params.dh) / scale_params.r;
+        float x2 = (cx + 0.5f * w_box - scale_params.dw) / scale_params.r;
+        float y2 = (cy + 0.5f * h_box - scale_params.dh) / scale_params.r;
         
         Object obj;
         obj.rect = cv::Rect_<float>(x1, y1, x2 - x1, y2 - y1);
@@ -114,9 +132,9 @@ int main(int argc, char **argv) {
     
     std::sort(proposals.begin(), proposals.end(), [](const Object& a, const Object& b) { return a.prob > b.prob; });
     std::vector<int> picked;
-    nms_sorted_bboxes(proposals, picked, 0.45f);
+    nms_sorted_bboxes(proposals, picked, nms_threshold);
     
-    if (picked.size() == 1) {
+    if (picked.size() > 0) {
         printf("true\n");
     } else {
         printf("false\n");

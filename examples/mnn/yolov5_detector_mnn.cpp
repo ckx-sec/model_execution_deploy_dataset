@@ -13,7 +13,7 @@ struct Object {
     float prob;
 };
 
-static void nms_sorted_bboxes(const std::vector<Object>& objects, std::vector<int>& picked, float nms_threshold)
+static void nms_sorted_bboxes(std::vector<Object>& objects, std::vector<int>& picked, float nms_threshold, bool agnostic = false)
 {
     picked.clear();
     const size_t n = objects.size();
@@ -21,19 +21,33 @@ static void nms_sorted_bboxes(const std::vector<Object>& objects, std::vector<in
     for (size_t i = 0; i < n; i++) {
         areas[i] = objects[i].rect.area();
     }
+
     for (size_t i = 0; i < n; i++) {
         const Object& a = objects[i];
         int keep = 1;
-        for (int j : picked) {
-            const Object& b = objects[j];
-            float inter_area = (a.rect & b.rect).area();
-            float union_area = areas[i] + areas[j] - inter_area;
-            if (inter_area / union_area > nms_threshold)
+        for (size_t j = 0; j < picked.size(); j++) {
+            const Object& b = objects[picked[j]];
+            if (!agnostic && a.label != b.label) {
+                continue;
+            }
+            // intersection over union
+            cv::Rect_<float> inter = a.rect & b.rect;
+            float inter_area = inter.area();
+            float union_area = areas[i] + areas[picked[j]] - inter_area;
+            float iou = inter_area / union_area;
+            if (iou > nms_threshold)
+            {
                 keep = 0;
+                break;
+            }
         }
-        if (keep) picked.push_back(i);
+
+        if (keep) {
+            picked.push_back(i);
+        }
     }
 }
+
 
 int main(int argc, char **argv) {
     if (argc < 3) {
@@ -85,37 +99,53 @@ int main(int argc, char **argv) {
     }
     MNN::Tensor output_host(output_tensor, output_tensor->getDimensionType());
     output_tensor->copyToHostTensor(&output_host);
-    // 假设输出格式为 N x 6: label, prob, x, y, w, h
-    std::vector<Object> proposals;
-    int num = output_host.shape()[1];
-    const float* outptr = output_host.host<float>();
-    for (int i = 0; i < num; ++i) {
-        int label = static_cast<int>(outptr[i*6+0]);
-        float prob = outptr[i*6+1];
-        float x = outptr[i*6+2];
-        float y = outptr[i*6+3];
-        float w_box = outptr[i*6+4];
-        float h_box = outptr[i*6+5];
-        float x0 = (x - w_box/2.f) * target_size;
-        float y0 = (y - h_box/2.f) * target_size;
-        float x1 = (x + w_box/2.f) * target_size;
-        float y1 = (y + h_box/2.f) * target_size;
-        x0 = std::max((x0 - 0) / scale, 0.f);
-        y0 = std::max((y0 - 0) / scale, 0.f);
-        x1 = std::min((x1 - 0) / scale, (float)w);
-        y1 = std::min((y1 - 0) / scale, (float)h);
-        Object obj;
-        obj.label = label;
-        obj.prob = prob;
-        obj.rect = cv::Rect_<float>(x0, y0, x1-x0, y1-y0);
-        if (prob > 0.5f) proposals.push_back(obj); // Threshold increased from 0.25
-    }
-    std::sort(proposals.begin(), proposals.end(), [](const Object& a, const Object& b) { return a.prob > b.prob; });
-    std::vector<int> picked;
-    nms_sorted_bboxes(proposals, picked, 0.45f);
     
-    // Stricter condition: exactly one object must be detected after NMS
-    if (picked.size() == 1) {
+    std::vector<Object> proposals;
+    const float* outptr = output_host.host<float>();
+    int num_proposal = output_host.shape()[1];
+    int num_class = output_host.shape()[2] - 5;
+    
+    float conf_threshold = 0.25f;
+    float nms_threshold = 0.45f;
+
+    for (int i = 0; i < num_proposal; i++)
+    {
+        const float* p = outptr + i * (num_class + 5);
+        float box_score = p[4];
+        if (box_score > conf_threshold)
+        {
+            int class_idx = std::max_element(p + 5, p + 5 + num_class) - (p + 5);
+            float class_score = p[5 + class_idx];
+            float confidence = box_score * class_score;
+
+            if (confidence > conf_threshold)
+            {
+                float cx = p[0];
+                float cy = p[1];
+                float ww = p[2];
+                float hh = p[3];
+
+                float x0 = (cx - ww * 0.5f) / scale;
+                float y0 = (cy - hh * 0.5f) / scale;
+                float x1 = (cx + ww * 0.5f) / scale;
+                float y1 = (cy + hh * 0.5f) / scale;
+                
+                Object obj;
+                obj.rect = cv::Rect_<float>(x0, y0, x1 - x0, y1 - y0);
+                obj.label = class_idx;
+                obj.prob = confidence;
+                proposals.push_back(obj);
+            }
+        }
+    }
+    std::sort(proposals.begin(), proposals.end(), [](const Object& a, const Object& b) {
+        return a.prob > b.prob;
+    });
+
+    std::vector<int> picked;
+    nms_sorted_bboxes(proposals, picked, nms_threshold);
+    
+    if (picked.size() > 0) {
         printf("true\n");
     } else {
         printf("false\n");

@@ -31,21 +31,13 @@ int main(int argc, char **argv) {
 
     MNN::CV::ImageProcess::Config p_config;
     p_config.sourceFormat = MNN::CV::BGR;
-    p_config.destFormat = MNN::CV::BGR; // Align with ONNX version, no color conversion
-    // Align with ONNX version's normalization (ImageNet mean/std applied to BGR)
-    // MNN mean/normal order is R, G, B. ONNX RT applies RGB-ordered mean to BGR image.
-    // So we swap R and B mean/normal values.
-    // Mean for R channel = mean_B * 255
-    p_config.mean[0] = 0.406f * 255.0f;
-    // Mean for G channel = mean_G * 255
+    p_config.destFormat = MNN::CV::RGB; // Align with ONNX version, convert to RGB
+    // Align with ONNX version's normalization (ImageNet mean/std)
+    p_config.mean[0] = 0.485f * 255.0f;
     p_config.mean[1] = 0.456f * 255.0f;
-    // Mean for B channel = mean_R * 255
-    p_config.mean[2] = 0.485f * 255.0f;
-    // Normal for R channel = 1 / (std_B * 255)
-    p_config.normal[0] = 1.0f / (0.225f * 255.0f);
-    // Normal for G channel = 1 / (std_G * 255)
+    p_config.mean[2] = 0.406f * 255.0f;
+    p_config.normal[0] = 1.0f / (0.229f * 255.0f);
     p_config.normal[1] = 1.0f / (0.224f * 255.0f);
-    // Normal for B channel = 1 / (std_R * 255)
     p_config.normal[2] = 1.0f / (0.229f * 255.0f);
     std::shared_ptr<MNN::CV::ImageProcess> pretreat(MNN::CV::ImageProcess::create(p_config));
     pretreat->convert(resized.data, input_size, input_size, resized.step[0], input_tensor);
